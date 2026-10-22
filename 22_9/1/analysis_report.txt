@@ -1,0 +1,22 @@
+ADVERSARIAL-TOWER I-BUG: BATCH ANALYSIS
+===============================================
+Runs per strategy: 100,000
+Total CSV rows: 300,000
+Failure/censoring budget inferred from file: 400 steps
+
+Naive: success 72.426% (72,426/100,000), 95% Wilson CI [72.148%, 72.702%]; successful-run steps mean 122.21, median 108, IQR [94, 130].
+Cautious: success 99.964% (99,964/100,000), 95% Wilson CI [99.950%, 99.974%]; successful-run steps mean 151.55, median 144, IQR [134, 168].
+Inertial: success 99.969% (99,969/100,000), 95% Wilson CI [99.956%, 99.978%]; successful-run steps mean 109.03, median 107, IQR [97, 118].
+
+PAIRED COMPARISONS
+Important: negative A-B steps means A is faster.
+Naive vs Cautious: A-only success=18, B-only success=27,556, both success=72,408, both fail=18; exact paired-success p=<1e-300. Among joint successes, mean A-B=-26.77 (bootstrap 95% CI [-27.10, -26.46]), median=-39; A faster/tie/B faster=63,240/133/9,035; Wilcoxon p=<1e-300.
+Naive vs Inertial: A-only success=15, B-only success=27,558, both success=72,411, both fail=16; exact paired-success p=<1e-300. Among joint successes, mean A-B=14.99 (bootstrap 95% CI [14.66, 15.32]), median=-1; A faster/tie/B faster=39,177/2,308/30,926; Wilcoxon p=<1e-300.
+Cautious vs Inertial: A-only success=0, B-only success=5, both success=99,964, both fail=31; exact paired-success p=0.0625. Among joint successes, mean A-B=42.53 (bootstrap 95% CI [42.48, 42.59]), median=38; A faster/tie/B faster=0/0/99,964; Wilcoxon p=<1e-300.
+
+INTERPRETATION RULES
+1. Treat failed runs at the step limit as right-censored failures, not arrivals.
+2. Report success rates first; report arrival steps only among successful runs.
+3. Use paired tests because all strategies share RunID/environment/seed.
+4. With 100,000 environments, emphasize effect sizes and confidence intervals, not p-values alone.
+5. Do not claim a mathematical convergence proof from finite simulation evidence.

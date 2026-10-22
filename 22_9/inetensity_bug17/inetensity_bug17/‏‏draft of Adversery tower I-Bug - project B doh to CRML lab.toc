@@ -1,0 +1,25 @@
+\xpg@aux {}{hebrew}
+\contentsline {section}{\numberline {1}מטרת הפרויקט והצגת הבעיה}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}רקע ומוטיבציה}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}הגדרת הבעיה}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}יעדי הפרויקט}{5}{subsection.1.3}%
+\contentsline {section}{\numberline {2}מבוא ורקע תיאורטי מפורט}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}סקירת ספרות: מרובוטיקה קלאסית לניווט מינימליסטי}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}אלגוריתם \textenglish {I-Bug} ופעולות היסוד (\textenglish {Primitives})}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}תיאור הבעיה: מודל האיום וסופרפוזיציה}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}אובדן רציפות כמנגנון זיהוי תקיפה}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}תיאור מפורט - אסטרטגיות פתרון וניתוח \textenglish {Trade-offs}}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}הבקר הנאיבי (\textenglish {Naive Baseline})}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}הבקר הזהיר (\textenglish {Cautious})}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}הבקר האינרציאלי (\textenglish {Inertial Heuristic})}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}סיכום ה-\textenglish {Trade-offs}}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}הוכחה מתמטית: ערובות התכנסות של הבקר הזהיר}{9}{section.4}%
+\contentsline {section}{\numberline {5}תיאור תוכנה ומתודולוגיית סימולציה}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}המודל הקינמטי ותבנית האיום}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}מחולל סביבות טופולוגיות}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}היקף הניסוי והרצות אצווה (\textenglish {Batch Processing})}{11}{subsection.5.3}%
+\contentsline {section}{\numberline {6}תוצאות ומדדים}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}אחוזי הצלחה ואמינות הניווט (\textenglish {Reliability})}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}יעילות מרחבית וזמני הגעה (\textenglish {Efficiency})}{11}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}הוכחה ויזואלית: סנכרון מחזורי (\textenglish {Cyclic Synchronization})}{14}{subsection.6.3}%
+\contentsline {section}{\numberline {7}סיכום ומסקנות}{14}{section.7}%
