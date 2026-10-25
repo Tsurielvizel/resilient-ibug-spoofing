@@ -78,7 +78,7 @@ function launch_viewer_navigator(filename::String="simulation_results.csv", star
         seed = get(seed_dict, rid, seed_dict[1])
         Random.seed!(seed)
         env = generate_random_env()
-        trajs, reached_flags, reached_steps = run_viewer_simulation(env, 600)
+        trajs, reached_flags, reached_steps = run_viewer_simulation(env, 2000)
         Random.seed!()
         return env, trajs, reached_flags, reached_steps
     end
@@ -293,7 +293,7 @@ function watch_replay(run_id::Int, filename::String="simulation_results.csv")
     env = generate_random_env()
 
     println("Running Simulation Viewer...")
-    trajs, reached_flags, reached_steps = run_viewer_simulation(env, 600)
+    trajs, reached_flags, reached_steps = run_viewer_simulation(env, 2000)
 
     Random.seed!()
     launch_viewer(env, trajs, reached_flags, reached_steps)
@@ -302,7 +302,7 @@ end
 function run_direct_simulation()
     println("Generating random environment and running simulation viewer...")
     env = generate_random_env()
-    trajs, reached_flags, reached_steps = run_viewer_simulation(env, 600)
+    trajs, reached_flags, reached_steps = run_viewer_simulation(env, 2000)
     launch_viewer(env, trajs, reached_flags, reached_steps)
 end
 
@@ -339,7 +339,7 @@ function start_fast_navigator(filename::String="simulation_results.csv", start_r
         seed = seed_dict[rid]
         Random.seed!(seed)
         env = generate_random_env()
-        trajs, reached_flags, reached_steps = run_viewer_simulation(env, 600)
+        trajs, reached_flags, reached_steps = run_viewer_simulation(env, 2000)
         Random.seed!()
         return env, trajs, reached_flags, reached_steps
     end

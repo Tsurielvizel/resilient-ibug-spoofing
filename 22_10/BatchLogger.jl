@@ -60,7 +60,7 @@ end
 # ============================================================================
 # export_run_details for Debugging
 # ============================================================================
-function export_run_details(run_id::Int, input_csv::String="simulation_results.csv", output_csv::String="debug_run_$(run_id).csv"; max_steps::Int=300)
+function export_run_details(run_id::Int, input_csv::String="simulation_results.csv", output_csv::String="debug_run_$(run_id).csv"; max_steps::Int=2000)
     if !isfile(input_csv)
         println("Error: $input_csv not found. Run run_batch_simulations first.")
         return
