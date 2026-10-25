@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניווט I-Bug חסין תחת מתקפת התחזות אותות לסירוגין — גרסה מונגשת ומאוירת</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --accent: #1d4ed8;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: "Segoe UI", "Assistant", "Rubik", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      margin: 0;
+      padding: 24px 14px;
+    }
+    .paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 40px 48px;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.07);
+      border: 1px solid var(--border);
+    }
+    h1 { font-size: 1.85rem; margin-bottom: 0.25rem; color: #0f172a; text-align: center; }
+    .subtitle { text-align: center; font-size: 1.12rem; color: var(--accent); font-weight: 600; margin-bottom: 0.4rem; }
+    .authors { text-align: center; color: #475569; margin-bottom: 1.8rem; font-size: 0.98rem; }
+    h2 { font-size: 1.35rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin-top: 2.2rem; }
+    .abstract-box {
+      background: #f1f5f9;
+      border-right: 4px solid var(--accent);
+      padding: 18px 22px;
+      border-radius: 8px;
+      margin-bottom: 1.8rem;
+    }
+    .glossary-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 18px 24px;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    .theorem-box {
+      background: #fefce8;
+      border-right: 4px solid #eab308;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+    }
+    .figure-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 1.6rem 0;
+      text-align: center;
+    }
+    .figure-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .figure-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .caption {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .badge-gif {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      margin-left: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.4rem 0;
+      font-size: 0.93rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 8px;
+      text-align: center;
+    }
+    th { background: #f8fafc; font-weight: 700; }
+    td:first-child, th:first-child { text-align: right; }
+    .katex-display { direction: ltr; }
+    @media (max-width: 700px) {
+      .paper { padding: 22px 18px; }
+      .figure-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <h1>ניווט <span dir="ltr">I-Bug</span> חסין תחת מתקפת התחזות אותות לסירוגין</h1>
+  <div class="subtitle">גרסה מונגשת ומאוירת לקריאה אונליין (כולל אנימציות חיות מהסימולציה)</div>
+  <div class="authors">
+    <strong>צוריאל ויזל</strong> &nbsp;&bull;&nbsp; <strong>אברהם גז</strong><br>
+    מנחה: ד"ר אנדריי ז'יטניקוב &nbsp;&bull;&nbsp; הטכניון – מכון טכנולוגי לישראל
+  </div>
+
+  <div class="abstract-box">
+    <p><strong>על מה המאמר במשפט אחד?</strong> דמיינו רובוט פשוט מאוד שצריך להגיע למגדל שידור בתוך מבוך חשוך (ללא GPS וללא מפה), כשהחיישנים היחידים שלו הם "חיישן מישוש" לקירות וחיישן שמודד את עוצמת האות מהמגדל (כמו במשחק "חם-קר"). במאמר זה אנו מראים איך "מגדל תוקף" שמדליק ומכבה אות מזויף יכול לשגע את הרובוט וללכוד אותו בלולאה אינסופית — וחשוב מכך, איך הרובוט יכול להשתמש בחוקי הפיזיקה של המהירות של עצמו כדי לחשוף את התרמית ולנצח, בלי להוסיף אף חיישן חדש!</p>
+    <p><strong>התקציר המדעי המונגש:</strong> רובוטים אוטונומיים מינימליסטיים הפועלים בסביבות חסומות GPS מסתמכים על משוב חיישנים מקומי במקום על קואורדינטות או <strong>אודומטריה</strong> (ספירת סיבובי גלגלים). אלגוריתם ה-<strong>I-Bug</strong> משיג הגעה מובטחת למטרה באמצעות חיישן מגע וחיישן <strong>סקלרי</strong> (המחזיר מספר בודד — עוצמה — ללא כיוון) בלבד. אולם כאשר המקלט מודד את <strong>הסכום החיבורי</strong> של מספר משדרים, משדר תוקף הפועל לסירוגין מעוות את כיוון העלייה בעוצמה (<strong>הגרדיאנט</strong>) במרחב הפתוח ומזריק שיאים כוזבים לאורך שפות מכשולים, מה שלוכד רובוט I-Bug רגיל בלולאות אינסופיות. אנו מציגים <strong>מסנן אנומליות</strong> מבוסס-פיזיקה ושתי אסטרטגיות התגוננות: אסטרטגיה <em>זהירה</em> (<strong>Cautious</strong>) המשמרת במדויק את מסלול התנועה התקין ($100.00\%$ הצלחה ב-$1,000,000$ מבוכים), ואסטרטגיה <em>אינרציאלית</em> (<strong>Inertial</strong>) מהירה בחוג פתוח ($99.61\%$ הצלחה תוך קיצור ממוצע הצעדים ב-$20.5\%$, לעומת $54.68\%$ בלבד באלגוריתם ה-<strong>Naive</strong> המקורי).</p>
+  </div>
+
+  <div class="glossary-box">
+    <h3 style="margin-top:0;">מדריך קריאה: מילון סימונים מתמטיים ומונחים (לפני שמתחילים)</h3>
+    <ul>
+      <li><strong>קבוצות ומרחבים ($\in, \subset, \mathbb{R}^2$):</strong> $\mathbb{R}^2$ הוא מישור דו-ממדי רגיל $(x,y)$. הזירה החסומה היא $\mathcal{W} \subset \mathbb{R}^2$, אוסף המכשולים הוא $\mathcal{O} = \{O_1, \dots, O_M\}$, והשטח הפנוי מתנגשות הוא $\mathcal{F} \subset \mathcal{W}$. הסימון $p \in \mathcal{F}$ פירושו: "הנקודה $p$ נמצאת בשטח הפנוי".</li>
+      <li><strong>מרחק אוקלידי ($\|p - p_t\|_2$):</strong> המרחק בקו ישר (לפי משפט פיתגורס) בין מיקום הרובוט $p$ למגדל המטרה $p_t$.</li>
+      <li><strong>סקלר לעומת וקטור:</strong> <em>סקלר</em> הוא מספר בודד (כמו עוצמת קליטה $0.5$). <em>וקטור</em> הוא חץ שיש לו גם גודל וגם כיוון. החיישן של הרובוט מודד רק סקלר!</li>
+      <li><strong>גרדיאנט ($\nabla_p S$) ונגזרות חלקיות ($\partial_x S, \partial_y S$):</strong> החץ $\nabla_p S$ מצביע לכיוון שבו עוצמת האות $S$ עולה הכי מהר. $\partial_x S$ ו-$\partial_y S$ מודדים בכמה העוצמה משתנה בצעד זעיר בציר $x$ ובציר $y$.</li>
+      <li><strong>סימונים לוגיים ועיגול ($\iff, \lor, \lceil \cdot \rceil$):</strong> $\iff$ פירושו "אם ורק אם"; $\lor$ פירושו "או"; ו-$\lceil x \rceil$ הוא עיגול כלפי מעלה למספר השלם הקרוב.</li>
+    </ul>
+  </div>
+
+  <h2>1. מבוא ומודל האיום: איך מנווטים עם משחק "חם-קר" ואיך מרמים אותו?</h2>
+  <p>כאשר אין הפרעות, עוצמת האות של מגדל המטרה נחלשת ככל שמתרחקים ממנו: $m(p - p_t) = \|p - p_t\|_2^{-1} = \frac{1}{\|p - p_t\|_2}$, והמשימה מצליחה כאשר $\|p - p_t\|_2 < R_{\text{reach}}$. בכל צעד $k$ הרובוט מבצע שלוש פעולות:</p>
+  <ol>
+    <li><strong>$u_{\text{ori}}$ (כיוון לגרדיאנט):</strong> דוגם את העוצמה בארבע נקודות זעירות סביבו ומחשב את זווית העלייה התלולה ביותר:
+      $$\theta_{\nabla}(p, t) = \operatorname{atan2}\!\bigl(\partial_y S(p, t),\, \partial_x S(p, t)\bigr) \pmod{2\pi}.$$
+    </li>
+    <li><strong>$u_{\text{fwd}}$ (תנועה קדימה ב-<code>MoveToTower</code>):</strong> צועד ישר בכיוון $\theta_k$. בפגיעה בקיר, הוא שומר את שיא העוצמה $i_H \leftarrow \max(S(p_k, t_k), i_H)$, פונה ימינה ב-$\pi/2$, ועובר ל-<code>FollowObstacle</code>.</li>
+    <li><strong>$u_{\text{fol}}$ (מעקב שפה ב-<code>FollowObstacle</code>):</strong> מקיף את המכשול כשהקיר משמאלו ומעדכן את השיא המקומי $i_{\max}$. ברגע שטיפס מעל הסף ($i_{\max} > i_H + \epsilon$) ואז זיהה ירידה ($S(p_k, t_k) < i_{\max} - \epsilon$), הוא הגיע לנקודה הקרובה ביותר למטרה על הקיר — מעדכן $i_H \leftarrow i_{\max}$ וחוזר ל-<code>MoveToTower</code>.</li>
+  </ol>
+
+  <div class="theorem-box">
+    <strong>הנחה 1 (שדה סופרפוזיציית RSS חיבורי):</strong> משדר תוקף במיקום $p_e \in \mathcal{F}$ משדר לסירוגין לפי מתג $u(t) \in \{0, 1\}$. החיישן מודד את סכום העוצמות:
+    $$S(p, t) = m(p - p_t) + e(p, t), \qquad e(p, t) = u(t)\,\frac{\alpha_e}{\|p - p_e\|_2}.$$
+  </div>
+
+  <p>כאשר התוקף דולק ($u(t)=1$), הוא מעוות את הגרדיאנט המרחבי:</p>
+  $$\nabla_p S(p, t) = -\frac{p - p_t}{\|p - p_t\|_2^3} - u(t)\,\alpha_e \frac{p - p_e}{\|p - p_e\|_2^3},$$
+  <p>וגורם לשני נזקים: <strong>(1) הטיית כיוון במרחב הפתוח</strong> (משיכה לכיוון משוקלל בין המטרה לתוקף), ו-<strong>(2) הרעלת סף הזיכרון ($i_H$)</strong> (שמירת עוצמה מנופחת בעת מגע בקיר שלעולם לא ניתן לעבור לאחר שהתוקף נכבה).</p>
+
+  <h2>2. גילוי אנומליות מבוסס-פיזיקה ושלוש אסטרטגיות ההתנהגות</h2>
+  <div class="theorem-box">
+    <strong>הנחה 2 (חסם ליפשיץ קינמטי לעומת קפיצת מיתוג בזמן):</strong> בחלון דגימה מהיר $\delta t \ll \Delta t$ (תזוזה מקסימלית $\delta s = v_{\max}\delta t$), השינוי הטבעי המקסימלי בעוצמה מעוצמת ייחוס $I_{\text{ref}} = 1/d$ חסום פיזיקלית על ידי:
+    $$\Delta I_{\max}(I_{\text{ref}}) = \frac{\delta s}{d(d - \delta s)} = \frac{\delta s\, I_{\text{ref}}^2}{1 - \delta s\, I_{\text{ref}}}.$$
+    לעומת זאת, מיתוג התוקף ($0 \leftrightarrow 1$) מייצר קפיצה מיידית $e_{\min} \ge \frac{\alpha_e}{\operatorname{diam}(\mathcal{W})}$ הגדולה מ-$\eta_{\text{spike}}\Delta I_{\max}$.
+  </div>
+
+  <p>בתחילת כל צעד $k$, המסנן משווה את קריאת תחילת הצעד $I_k^- = S(p_{k-1}, t_k)$ מול קריאת סוף הצעד הקודם $I_{k-1}^+ = S(p_{k-1}, t_{k-1})$ ($\Delta I_k = I_k^- - I_{k-1}^+$) ומזהה הדלקה ($\mathcal{A}_{\text{spike}}$) וכיבוי ($\mathcal{A}_{\text{drop}}$):</p>
+  $$\mathcal{A}_{\text{spike}} \iff \Delta I_k > \eta_{\text{spike}}\,\Delta I_{\max}(I_{k-1}^+), \qquad \mathcal{A}_{\text{drop}} \iff (-\Delta I_k > 0.15 I_{k-1}^+) \;\lor\; (-\Delta I_k > \eta_{\text{drop}}\Delta I_{\max}(I_k^-)).$$
+
+  <div class="figure-card">
+    <img src="anomaly_filter_anim.gif" alt="אנימציית מסנן האנומליות בזמן אמת">
+    <div class="caption"><span class="badge-gif">אנימציה חיה (GIF)</span> <strong>מסנן האנומליות של הרובוט הזהיר (Cautious) בפעולה מתוך הסימולציה (הרצה 457):</strong> שימו לב כיצד בצעדים 20, 60 ו-100 התוקף נדלק (האזור הוורוד) והאות קופץ בפתאומיות ($\mathcal{A}_{\text{spike}}$). הרובוט מזהה שהקפיצה בלתי אפשרית פיזיקלית, עוצר במקום ונועל את זיכרונו (הקו האופקי הישר), ממתין לנפילת הכיבוי ($\mathcal{A}_{\text{drop}}$) ול-3 צעדי אימות (האזור הצהוב), ומגיע למטרה בצעד 137!</div>
+  </div>
+
+  <h2>3. הוכחה מתמטית ותופעת התהודה (Resonance)</h2>
+  <div class="theorem-box">
+    <strong>משפט 1 (שימור מותנה של המסלול וההתכנסות באסטרטגיה הזהירה):</strong> תחת הנחות 1–2 (עם $\eta_{\text{drop}} \le \eta_{\text{spike}}$ ו-$T_{\text{off}} > N_{\text{confirm}}$):
+    (א) לאחר הסרת צעדי העצירה, מסלול הרובוט הזהיר $\gamma_{\text{cautious}}$ זהה צעד-אחר-צעד למסלול הרובוט התקין ללא תקיפה $\gamma_{\text{ideal}}$; ו-(ב) בכל מבוך שבו הרובוט התקין מגיע למטרה תוך $N_{\text{ideal}} < \infty$ צעדים, הרובוט הזהיר מגיע למטרה תוך לכל היותר:
+    $$N_{\text{cautious}} \le N_{\text{ideal}} + \left\lceil \frac{N_{\text{ideal}}}{T_{\text{off}} - N_{\text{confirm}}} \right\rceil (T_{\text{on}} + N_{\text{confirm}}).$$
+  </div>
+
+  <div class="theorem-box" style="background:#fff1f2; border-right-color:#e11d48;">
+    <strong>טענה 1 (מלכודת התהודה / סנכרון פאזה באסטרטגיה האינרציאלית):</strong> אם הרובוט האינרציאלי מקיף מכשול שזמן ההקפה שלו מקיים $T_{\text{orbit}} = m \cdot T_{\text{cycle}}$ והקשת העיוורת באורך $T_{\text{on}}$ צעדים מכסה את אזור היציאה $\mathcal{A}_L$, הרובוט יחלוף על פני נקודת היציאה בזמן שזיהוי השיא מושהה בכל הקפה מחדש — ויילכד בלולאה אינסופית!
+  </div>
+
+  <div class="figure-card">
+    <img src="simulation_trap_anim.gif" alt="אנימציית מלכודת התהודה והרעלת הסף">
+    <div class="caption"><span class="badge-gif">אנימציה חיה (GIF)</span> <strong>צפייה חיה בהרצה 457 (כישלון כפול של Naive ו-Inertial מול הצלחה של Cautious):</strong> כאשר הרקע מהבהב באדום וטבעות השידור מופיעות, התוקף פעיל ($u(t)=1$).
+    <ul>
+      <li><strong>הרובוט התמים (Naive, תכלת):</strong> פוגע במכשול ה-L המרכזי בזמן תקיפה, שומר סף מורעל ($i_H = 1.230$), ונלכד סביבו לנצח.</li>
+      <li><strong>הרובוט האינרציאלי (Inertial, ירוק):</strong> עובר את המכשול הראשון, אך במלבן העליון זמן ההקפה שלו מסתנכרן עם מחזור ה-40 צעדים של התוקף — בכל פעם שהוא מגיע לפינה העליונה הקרובה למטרה, התוקף נדלק והוא מפספס את היציאה!</li>
+      <li><strong>הרובוט הזהיר (Cautious, כתום):</strong> עוצר במקום בכל הבהוב אדום ומגיע למגדל המטרה בצעד 137.</li>
+    </ul>
+    </div>
+  </div>
+
+  <h2>4. תוצאות הניסוי ב-$1,000,000$ מבוכים</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>אסטרטגיה</th>
+        <th>אחוז הצלחה (95% CI)</th>
+        <th>ממוצע צעדים (במוצלחות)</th>
+        <th>חציון [IQR] (במוצלחות)</th>
+        <th>ממוצע כולל קנס ($\bar{N}_{\text{capped}}$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="font-style:italic; color:#475569;">
+        <td>Benign I-Bug (ללא תקיפה)</td>
+        <td>100.00%</td>
+        <td>132.6</td>
+        <td>126.0 [108, 150]</td>
+        <td>132.6</td>
+      </tr>
+      <tr>
+        <td>Naive (תמימה — ללא הגנה)</td>
+        <td>54.68% &plusmn; 0.10%</td>
+        <td>199.3</td>
+        <td>153.0 [121, 205]</td>
+        <td>1015.4</td>
+      </tr>
+      <tr style="font-weight:700; background:#f0fdf4;">
+        <td>Cautious (זהירה — עצירה בזמן תקיפה)</td>
+        <td>100.00% ([99.9996, 100]%)</td>
+        <td>193.0</td>
+        <td>178.0 [160, 215]</td>
+        <td>193.0</td>
+      </tr>
+      <tr>
+        <td><strong>Inertial (אינרציאלית — תנועה עיוורת)</strong></td>
+        <td>99.61% &plusmn; 0.01%</td>
+        <td><strong>153.4</strong></td>
+        <td><strong>135.0 [115, 168]</strong></td>
+        <td><strong>160.6</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="figure-grid">
+    <div class="figure-card">
+      <img src="success_rates.png" alt="שיעורי הצלחה">
+      <div class="caption"><strong>איור א':</strong> שיעורי ההצלחה על פני $1,000,000$ מבוכים אקראיים.</div>
+    </div>
+    <div class="figure-card">
+      <img src="steps_distribution.png" alt="התפלגות צעדים">
+      <div class="caption"><strong>איור ב':</strong> התפלגות מספר הצעדים בריצות מוצלחות.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
