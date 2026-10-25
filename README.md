@@ -38,12 +38,12 @@ This project studies minimalist intensity-based bug navigation (**I-Bug**) under
 
 ---
 
-## 3. Summary of $1,000,000$ Paired Simulation Results
+## 3. Summary of 1,000,000 Paired Simulation Results
 
-| Strategy | Success Rate ($95\%$ CI) | Mean Steps (Succ.) | Median [IQR] (Succ.) | $\bar{N}_{\text{capped}}$ (All Runs) |
+| Strategy | Success Rate (95% CI) | Mean Steps (Succ.) | Median [IQR] (Succ.) | Mean Steps Capped (All Runs) |
 | :--- | :---: | :---: | :---: | :---: |
-| *Benign I-Bug (no attack)* | *$100.00\%$* | *$132.6$* | *$126.0$ $[108, 150]$* | *$132.6$* |
-| **Naive** (Baseline I-Bug) | $54.68\% \pm 0.10\%$ | $199.3$ | $153.0$ $[121, 205]$ | $1015.4$ |
-| **Cautious** (Proposed) | **$100.00\%$** ($[99.9996, 100]\%$) | $193.0$ (max $578$) | $178.0$ $[160, 215]$ | $193.0$ |
-| **Inertial** (Proposed) | $99.61\% \pm 0.01\%$ ($3,877$ fails) | **$153.4$** ($-20.5\%$) | **$135.0$** $[115, 168]$ | **$160.6$** ($-16.8\%$) |
+| *Benign I-Bug (no attack)* | *100.00%* | *132.6* | *126.0 [108, 150]* | *132.6* |
+| **Naive** (Baseline I-Bug) | 54.68% ± 0.10% | 199.3 | 153.0 [121, 205] | 1015.4 |
+| **Cautious** (Proposed) | **100.00%** ([99.9996, 100]%) | 193.0 (max 578) | 178.0 [160, 215] | 193.0 |
+| **Inertial** (Proposed) | 99.61% ± 0.01% (3,877 fails) | **153.4** (-20.5%) | **135.0** [115, 168] | **160.6** (-16.8%) |
 
