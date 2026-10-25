@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.25)  25 OCT 2026 12:54
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.25)  25 OCT 2026 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -851,9 +851,7 @@ File: steps_distribution.png Graphic file (type bmp)
  [2]
 File: simulation_trap.png Graphic file (type bmp)
 <simulation_trap.png>
- [3
-
-] (draft_robust_ibug_short_cscml_he.aux)
+ [3] (draft_robust_ibug_short_cscml_he.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
@@ -866,7 +864,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  10943 strings out of 402628
  258025 string characters out of 5439520
- 740715 words of memory out of 5000000
+ 741715 words of memory out of 5000000
  39782 multiletter control sequences out of 15000+600000
  634777 words of font info for 155 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

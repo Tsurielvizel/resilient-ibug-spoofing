@@ -7,6 +7,7 @@ See the root [`../README.md`](../README.md) for the complete repository overview
   ```powershell
   pdflatex -interaction=nonstopmode "draft of Adversery tower I-Bug.tex"
   pdflatex -interaction=nonstopmode "draft_robust_ibug_short_cscml.tex"
+  pdflatex -interaction=nonstopmode "draft_robust_ibug_short_accessible_en.tex"
   ```
 * **Compile Hebrew papers (requires `xelatex`):**
   ```powershell

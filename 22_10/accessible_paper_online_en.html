@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resilient I-Bug Navigation under Intermittent Signal Spoofing — Illustrated Accessible Edition</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --accent: #1d4ed8;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+      margin: 0;
+      padding: 24px 14px;
+    }
+    .paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 40px 48px;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.07);
+      border: 1px solid var(--border);
+    }
+    h1 { font-size: 1.85rem; margin-bottom: 0.25rem; color: #0f172a; text-align: center; }
+    .subtitle { text-align: center; font-size: 1.12rem; color: var(--accent); font-weight: 600; margin-bottom: 0.4rem; }
+    .authors { text-align: center; color: #475569; margin-bottom: 1.8rem; font-size: 0.98rem; }
+    h2 { font-size: 1.35rem; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin-top: 2.2rem; }
+    .abstract-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--accent);
+      padding: 18px 22px;
+      border-radius: 8px;
+      margin-bottom: 1.8rem;
+    }
+    .glossary-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 18px 24px;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    .theorem-box {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+    }
+    .figure-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 1.6rem 0;
+      text-align: center;
+    }
+    .figure-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .figure-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .caption {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-top: 10px;
+      text-align: left;
+    }
+    .badge-gif {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.4rem 0;
+      font-size: 0.93rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 8px;
+      text-align: center;
+    }
+    th { background: #f8fafc; font-weight: 700; }
+    td:first-child, th:first-child { text-align: left; }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <h1>Resilient I-Bug Navigation under Intermittent Signal Spoofing</h1>
+  <div class="subtitle">Illustrated Accessible Online Edition (with Live Simulation GIFs)</div>
+  <div class="authors">
+    <strong>Tsuriel Vizel</strong> &nbsp;&bull;&nbsp; <strong>Avraham Guez</strong><br>
+    Supervisor: Dr. Andrey Zhitnikov &nbsp;&bull;&nbsp; Technion – Israel Institute of Technology
+  </div>
+
+  <div class="abstract-box">
+    <p><strong>The Paper in One Sentence:</strong> Imagine a simple blindfolded robot trying to reach a radio beacon inside an unknown obstacle course using only a touch bumper and a "Hot-or-Cold" signal-strength meter. We show how an intermittent "spoofing" transmitter can trick the robot into walking in circles forever—and how the robot can use the physics of its own top speed to catch the fake signal and reach the goal without adding a single new sensor!</p>
+    <p><strong>Accessible Scientific Abstract:</strong> Minimalist autonomous robots operating in GPS-denied environments rely on local sensor feedback rather than global coordinates or <strong>odometry</strong> (wheel-rotation distance tracking). The <strong>I-Bug</strong> algorithm achieves guaranteed target convergence using only a contact sensor and a <strong>scalar</strong> signal-intensity sensor (which reports a single number—strength—without direction). However, when the receiver measures the <strong>additive sum</strong> of multiple emitters, an intermittent spoofing transmitter warps the direction of steepest signal increase (<strong>the gradient</strong>) in free space and injects false signal peaks along obstacle boundaries, trapping standard I-Bug agents in perpetual loops. We present a kinematics-based temporal <strong>anomaly filter</strong> and two counter-strategies: a <em>Cautious</em> strategy that preserves the exact active path of benign I-Bug ($100.00\%$ success across $1,000,000$ mazes), and a fast open-loop <em>Inertial</em> heuristic ($99.61\%$ success while reducing mean steps by $20.5\%$, compared to $54.68\%$ for the unprotected <strong>Naive</strong> baseline).</p>
+  </div>
+
+  <div class="glossary-box">
+    <h3 style="margin-top:0;">Reader's Guide: Quick Mathematical Notation &amp; Terminology Key</h3>
+    <ul>
+      <li><strong>Sets and Spaces ($\in, \subset, \mathbb{R}^2$):</strong> $\mathbb{R}^2$ is a flat 2D plane $(x,y)$. The bounded workspace is $\mathcal{W} \subset \mathbb{R}^2$, the obstacles are $\mathcal{O} = \{O_1, \dots, O_M\}$, and the collision-free floor is $\mathcal{F} \subset \mathcal{W}$. Writing $p \in \mathcal{F}$ reads: "position $p$ is inside the free space $\mathcal{F}$."</li>
+      <li><strong>Euclidean Distance ($\|p - p_t\|_2$):</strong> Straight-line Pythagorean distance between the robot $p$ and target beacon $p_t$.</li>
+      <li><strong>Scalar vs. Vector:</strong> A <em>scalar</em> is a single number (e.g., intensity $0.5$). A <em>vector</em> is an arrow with magnitude and direction. The robot's sensor measures only a scalar!</li>
+      <li><strong>Gradient ($\nabla_p S$) and Partial Derivatives ($\partial_x S, \partial_y S$):</strong> $\nabla_p S$ points in the direction where signal $S$ rises fastest ("steepest uphill"). $\partial_x S$ and $\partial_y S$ measure how much $S$ changes over a tiny step along $x$ and $y$.</li>
+      <li><strong>Logical &amp; Rounding Symbols ($\iff, \lor, \lceil \cdot \rceil$):</strong> $\iff$ means "if and only if"; $\lor$ means logical "OR"; and $\lceil x \rceil$ rounds $x$ up to the next integer.</li>
+    </ul>
+  </div>
+
+  <h2>1. Introduction &amp; Threat Model: Navigating by "Hot-and-Cold" and How Spoofing Breaks It</h2>
+  <p>Under benign conditions, the target signal decays with distance as $m(p - p_t) = \|p - p_t\|_2^{-1} = \frac{1}{\|p - p_t\|_2}$, and the mission succeeds when $\|p - p_t\|_2 < R_{\text{reach}}$. At each step $k$, the robot uses three motion primitives:</p>
+  <ol>
+    <li><strong>$u_{\text{ori}}$ (Orient to Gradient):</strong> Probes signal intensity at four nearby points to find the steepest uphill angle:
+      $$\theta_{\nabla}(p, t) = \operatorname{atan2}\!\bigl(\partial_y S(p, t),\, \partial_x S(p, t)\bigr) \pmod{2\pi}.$$
+    </li>
+    <li><strong>$u_{\text{fwd}}$ (Move Forward in <code>MoveToTower</code>):</strong> Steps straight ahead along $\theta_k$. Upon hitting a wall, it records the hit threshold $i_H \leftarrow \max(S(p_k, t_k), i_H)$, turns right by $\pi/2$, and enters <code>FollowObstacle</code>.</li>
+    <li><strong>$u_{\text{fol}}$ (Follow Boundary in <code>FollowObstacle</code>):</strong> Traces the obstacle perimeter keeping the wall on its left while tracking the local maximum $i_{\max}$. Once it climbs above $i_H$ ($i_{\max} > i_H + \epsilon$) and then detects a drop ($S(p_k, t_k) < i_{\max} - \epsilon$), it has reached the closest boundary point to the beacon—updating $i_H \leftarrow i_{\max}$ and returning to <code>MoveToTower</code>.</li>
+  </ol>
+
+  <div class="theorem-box">
+    <strong>Assumption 1 (Additive RSS Superposition Field):</strong> A spoofing transmitter at $p_e \in \mathcal{F}$ switches on/off via $u(t) \in \{0, 1\}$. The sensor observes the sum of both emitters:
+    $$S(p, t) = m(p - p_t) + e(p, t), \qquad e(p, t) = u(t)\,\frac{\alpha_e}{\|p - p_e\|_2}.$$
+  </div>
+
+  <p>When $u(t)=1$, the attacker warps the spatial gradient:</p>
+  $$\nabla_p S(p, t) = -\frac{p - p_t}{\|p - p_t\|_2^3} - u(t)\,\alpha_e \frac{p - p_e}{\|p - p_e\|_2^3},$$
+  <p>causing: <strong>(1) Free-Space Gradient Deflection</strong> (pulling the robot toward the vector sum of both towers), and <strong>(2) Threshold Poisoning ($i_H$)</strong> (recording an artificially inflated hit intensity on a wall that can never be exceeded once $u(t) \to 0$).</p>
+
+  <h2>2. Physics-Informed Anomaly Detection and Counter-Strategies</h2>
+  <div class="theorem-box">
+    <strong>Assumption 2 (Kinematic Lipschitz Bound vs. Temporal Discontinuity):</strong> Over a fast sampling window $\delta t \ll \Delta t$ (maximum displacement $\delta s = v_{\max}\delta t$), the largest natural intensity change from reference $I_{\text{ref}} = 1/d$ caused by robot movement is bounded by:
+    $$\Delta I_{\max}(I_{\text{ref}}) = \frac{\delta s}{d(d - \delta s)} = \frac{\delta s\, I_{\text{ref}}^2}{1 - \delta s\, I_{\text{ref}}}.$$
+    Conversely, transmitter switching ($0 \leftrightarrow 1$) creates an instantaneous step jump $e_{\min} \ge \frac{\alpha_e}{\operatorname{diam}(\mathcal{W})}$ strictly larger than $\eta_{\text{spike}}\Delta I_{\max}$.
+  </div>
+
+  <p>At the start of step $k$, the filter compares $I_k^- = S(p_{k-1}, t_k)$ against $I_{k-1}^+ = S(p_{k-1}, t_{k-1})$ ($\Delta I_k = I_k^- - I_{k-1}^+$) to flag activation spikes ($\mathcal{A}_{\text{spike}}$) and deactivation drops ($\mathcal{A}_{\text{drop}}$):</p>
+  $$\mathcal{A}_{\text{spike}} \iff \Delta I_k > \eta_{\text{spike}}\,\Delta I_{\max}(I_{k-1}^+), \qquad \mathcal{A}_{\text{drop}} \iff (-\Delta I_k > 0.15 I_{k-1}^+) \;\lor\; (-\Delta I_k > \eta_{\text{drop}}\Delta I_{\max}(I_k^-)).$$
+
+  <div class="figure-card">
+    <img src="anomaly_filter_anim.gif" alt="Real-time Anomaly Filter Animation">
+    <div class="caption"><span class="badge-gif">LIVE GIF</span> <strong>The Cautious Robot's Anomaly Filter in Action (RunID 457):</strong> At steps 20, 60, and 100, the spoofing transmitter switches on (pink regions) and the signal jumps vertically ($\mathcal{A}_{\text{spike}}$). The robot detects that the jump violates its physical speed limit $\Delta I_{\max}$, freezes in place and locks its memory (flat horizontal plateaus), waits for the deactivation drop ($\mathcal{A}_{\text{drop}}$) plus 3 confirmation ticks (yellow regions), and reaches the target at step 137!</div>
+  </div>
+
+  <h2>3. Formal Convergence Proof &amp; The Resonance Trap</h2>
+  <div class="theorem-box">
+    <strong>Theorem 1 (Conditional Trajectory &amp; Convergence Preservation):</strong> Under Assumptions 1–2 (with $\eta_{\text{drop}} \le \eta_{\text{spike}}$ and $T_{\text{off}} > N_{\text{confirm}}$):
+    (i) after removing paused steps, the Cautious robot's trajectory $\gamma_{\text{cautious}}$ is identical step-by-step to the benign I-Bug trajectory $\gamma_{\text{ideal}}$; and (ii) whenever the benign robot reaches the target in $N_{\text{ideal}} < \infty$ steps, the Cautious robot reaches the target in at most:
+    $$N_{\text{cautious}} \le N_{\text{ideal}} + \left\lceil \frac{N_{\text{ideal}}}{T_{\text{off}} - N_{\text{confirm}}} \right\rceil (T_{\text{on}} + N_{\text{confirm}}).$$
+  </div>
+
+  <div class="theorem-box" style="background:#fff1f2; border-left-color:#e11d48;">
+    <strong>Proposition 1 (Topological Resonance Trap in the Inertial Strategy):</strong> If the Inertial robot orbits an obstacle whose perimeter traversal time satisfies $T_{\text{orbit}} = m \cdot T_{\text{cycle}}$ and the $T_{\text{on}}$-step blind arc covers the departure arc $\mathcal{A}_L$, the robot will pass over the exit while peak detection is suspended on every revolution—trapping it in an infinite limit cycle!
+  </div>
+
+  <div class="figure-card">
+    <img src="simulation_trap_anim.gif" alt="Resonance Trap and Threshold Poisoning Animation">
+    <div class="caption"><span class="badge-gif">LIVE GIF</span> <strong>Step-by-Step Replay of RunID 457 (Double Failure of Naive &amp; Inertial vs. Cautious Convergence):</strong> Red background flashes and shockwave rings indicate when the adversary is active ($u(t)=1$).
+    <ul>
+      <li><strong>Naive (cyan):</strong> Hits the central L-obstacle during a spoofing burst, records a poisoned threshold ($i_H = 1.230$), and orbits it forever.</li>
+      <li><strong>Inertial (green):</strong> Clears the first obstacle, but on the upper-right rectangle its orbital period phase-locks with the 40-step spoofing cycle—every time it reaches the top-right departure corner, the spoofer turns on for 10 steps and blinds it past the exit!</li>
+      <li><strong>Cautious (orange):</strong> Freezes during every red flash and reaches the target beacon at step 137.</li>
+    </ul>
+    </div>
+  </div>
+
+  <h2>4. Empirical Results Across $1,000,000$ Randomized Mazes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Strategy</th>
+        <th>Success Rate (95% CI)</th>
+        <th>Mean Steps (Succ.)</th>
+        <th>Median [IQR] (Succ.)</th>
+        <th>Capped Mean ($\bar{N}_{\text{capped}}$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="font-style:italic; color:#475569;">
+        <td>Benign I-Bug (no attack, all 3 equal)</td>
+        <td>100.00%</td>
+        <td>132.6</td>
+        <td>126.0 [108, 150]</td>
+        <td>132.6</td>
+      </tr>
+      <tr>
+        <td>Naive (Unprotected Baseline)</td>
+        <td>54.68% &plusmn; 0.10%</td>
+        <td>199.3</td>
+        <td>153.0 [121, 205]</td>
+        <td>1015.4</td>
+      </tr>
+      <tr style="font-weight:700; background:#f0fdf4;">
+        <td>Cautious (Stop &amp; Lock Memory)</td>
+        <td>100.00% ([99.9996, 100]%)</td>
+        <td>193.0</td>
+        <td>178.0 [160, 215]</td>
+        <td>193.0</td>
+      </tr>
+      <tr>
+        <td><strong>Inertial (Open-Loop Continuation)</strong></td>
+        <td>99.61% &plusmn; 0.01%</td>
+        <td><strong>153.4</strong></td>
+        <td><strong>135.0 [115, 168]</strong></td>
+        <td><strong>160.6</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="figure-grid">
+    <div class="figure-card">
+      <img src="success_rates.png" alt="Success Rates">
+      <div class="caption"><strong>Figure A:</strong> Success rates across $1,000,000$ randomized mazes.</div>
+    </div>
+    <div class="figure-card">
+      <img src="steps_distribution.png" alt="Step Count Distribution">
+      <div class="caption"><strong>Figure B:</strong> Step count distribution for successful runs.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

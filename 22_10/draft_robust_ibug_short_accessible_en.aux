@@ -1,0 +1,53 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{lumelsky1987path}
+\citation{kamon1998tangentbug}
+\citation{taylor2009ibug}
+\citation{taylor2014intensity}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction \& Threat Model: Navigating by ``Hot-and-Cold'' and How Spoofing Breaks It}{2}{section.1}\protected@file@percent }
+\newlabel{eq:grad_angle}{{1}{2}{Introduction \& Threat Model: Navigating by ``Hot-and-Cold'' and How Spoofing Breaks It}{equation.1}{}}
+\citation{kerns2014unmanned}
+\citation{psiaki2016gnss}
+\citation{giraldo2018survey}
+\citation{basseville1993detection}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {(a)} How benign I-Bug works: the robot walks uphill toward the beacon (\texttt  {MoveToTower}), records intensity $i_H$ upon hitting a wall, follows the perimeter (\texttt  {FollowObstacle}) until it detects a peak $i_{\max } > i_H$ at the corner closest to the beacon, and departs toward the goal. \textbf  {(b)} When the spoofing transmitter turns on ($u(t)=1$), the sensor observes the sum of both signals, deflecting the steepest-ascent gradient vector $\nabla _p S$ off course.}}{3}{figure.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:ibug_and_spoof}{{1}{3}{\textbf {(a)} How benign I-Bug works: the robot walks uphill toward the beacon (\texttt {MoveToTower}), records intensity $i_H$ upon hitting a wall, follows the perimeter (\texttt {FollowObstacle}) until it detects a peak $i_{\max } > i_H$ at the corner closest to the beacon, and departs toward the goal. \textbf {(b)} When the spoofing transmitter turns on ($u(t)=1$), the sensor observes the sum of both signals, deflecting the steepest-ascent gradient vector $\nabla _p S$ off course}{figure.caption.2}{}}
+\newlabel{assump:superposition}{{1}{3}{Additive RSS Superposition Field}{assumption.1}{}}
+\newlabel{eq:superposition}{{2}{3}{Additive RSS Superposition Field}{equation.2}{}}
+\newlabel{eq:corrupted_grad}{{3}{3}{Introduction \& Threat Model: Navigating by ``Hot-and-Cold'' and How Spoofing Breaks It}{equation.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Physics-Informed Anomaly Detection and Counter-Strategies}{3}{section.2}\protected@file@percent }
+\newlabel{assump:discontinuity}{{2}{3}{Kinematic Lipschitz Bound vs.\ Temporal Discontinuity}{assumption.2}{}}
+\newlabel{eq:lipschitz}{{4}{3}{Kinematic Lipschitz Bound vs.\ Temporal Discontinuity}{equation.4}{}}
+\citation{taylor2014intensity}
+\newlabel{eq:emin_short}{{5}{4}{Kinematic Lipschitz Bound vs.\ Temporal Discontinuity}{equation.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces How the anomaly filter and Cautious strategy operate over time: normal motion produces gentle signal changes bounded by $\Delta I_{\max }$. When the attacker switches on, the vertical jump triggers $\mathcal  {A}_{\text  {spike}}$, freezing the robot and locking its memory until the deactivation drop $\mathcal  {A}_{\text  {drop}}$ is followed by $N_{\text  {confirm}}=3$ clean steps. \textbf  {[Watch live simulation animation: \href  {run:anomaly_filter_anim.gif}{Click to open \texttt  {anomaly\_filter\_anim.gif}} or view \href  {run:accessible_paper_online_en.html}{the Online HTML Edition}]}}}{4}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:anomaly_filter}{{2}{4}{How the anomaly filter and Cautious strategy operate over time: normal motion produces gentle signal changes bounded by $\Delta I_{\max }$. When the attacker switches on, the vertical jump triggers $\mathcal {A}_{\text {spike}}$, freezing the robot and locking its memory until the deactivation drop $\mathcal {A}_{\text {drop}}$ is followed by $N_{\text {confirm}}=3$ clean steps. \textbf {[Watch live simulation animation: \href {run:anomaly_filter_anim.gif}{Click to open \texttt {anomaly\_filter\_anim.gif}} or view \href {run:accessible_paper_online_en.html}{the Online HTML Edition}]}}{figure.caption.3}{}}
+\newlabel{eq:spike}{{6}{4}{Physics-Informed Anomaly Detection and Counter-Strategies}{equation.6}{}}
+\newlabel{eq:drop}{{7}{4}{Physics-Informed Anomaly Detection and Counter-Strategies}{equation.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Mathematical Proof \& The Resonance Trap}{5}{section.3}\protected@file@percent }
+\newlabel{thm:cautious}{{1}{5}{Conditional Active-State Trajectory and Convergence Preservation}{theorem.1}{}}
+\newlabel{eq:bound}{{8}{5}{Conditional Active-State Trajectory and Convergence Preservation}{Item.9}{}}
+\newlabel{prop:resonance}{{1}{5}{The Topological Resonance Trap in the Inertial Strategy}{proposition.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Visualizing Proposition~\ref {prop:resonance} (Topological Resonance): circling the obstacle takes $40$ steps—matching the attacker's $40$-step period. Every lap, the $10$-step spoofing burst (red arc) turns on right as the Inertial robot reaches the top-right exit corner $\mathcal  {A}_L$, blinding it to the departure peak on every revolution.}}{5}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:resonance_diagram}{{3}{5}{Visualizing Proposition~\ref {prop:resonance} (Topological Resonance): circling the obstacle takes $40$ steps—matching the attacker's $40$-step period. Every lap, the $10$-step spoofing burst (red arc) turns on right as the Inertial robot reaches the top-right exit corner $\mathcal {A}_L$, blinding it to the departure peak on every revolution}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Large-Scale Evaluation Across $1,000,000$ Mazes}{5}{section.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Performance Comparison Across $1,000,000$ Paired Environments}}{6}{table.caption.5}\protected@file@percent }
+\newlabel{tab:results}{{1}{6}{Performance Comparison Across $1,000,000$ Paired Environments}{table.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Success rates across $1,000,000$ mazes.}}{6}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:succ}{{4}{6}{Success rates across $1,000,000$ mazes}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Step count distribution (successful runs).}}{6}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:steps}{{5}{6}{Step count distribution (successful runs)}{figure.caption.6}{}}
+\bibcite{lumelsky1987path}{1}
+\bibcite{kamon1998tangentbug}{2}
+\bibcite{taylor2009ibug}{3}
+\bibcite{taylor2014intensity}{4}
+\bibcite{kerns2014unmanned}{5}
+\bibcite{psiaki2016gnss}{6}
+\bibcite{giraldo2018survey}{7}
+\bibcite{basseville1993detection}{8}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces A real double-failure run from our simulation (RunID 457): \textbf  {Naive (cyan)} is threshold-poisoned ($i_H = 1.230$) on the central L-obstacle; \textbf  {Inertial (green)} is caught in a 40-step resonant loop on the upper-right rectangle; \textbf  {Cautious (orange)} pauses during bursts and reaches the target (red star) in $137$ steps. \textbf  {[Watch the step-by-step animated replay: \href  {run:simulation_trap_anim.gif}{Click to open \texttt  {simulation\_trap\_anim.gif}} or open \href  {run:accessible_paper_online_en.html}{the Online HTML Edition}]}}}{7}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:trap}{{6}{7}{A real double-failure run from our simulation (RunID 457): \textbf {Naive (cyan)} is threshold-poisoned ($i_H = 1.230$) on the central L-obstacle; \textbf {Inertial (green)} is caught in a 40-step resonant loop on the upper-right rectangle; \textbf {Cautious (orange)} pauses during bursts and reaches the target (red star) in $137$ steps. \textbf {[Watch the step-by-step animated replay: \href {run:simulation_trap_anim.gif}{Click to open \texttt {simulation\_trap\_anim.gif}} or open \href {run:accessible_paper_online_en.html}{the Online HTML Edition}]}}{figure.caption.7}{}}
+\gdef \@abspage@last{7}

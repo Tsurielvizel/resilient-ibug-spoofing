@@ -31,7 +31,8 @@ This project studies minimalist intensity-based bug navigation (**I-Bug**) under
 * `draft of Adversery tower I-Bug.tex` (compile with `pdflatex`): Full single-column academic paper (~9 pages).
 * `draft_robust_ibug_short_cscml.tex` (compile with `pdflatex`): 2-column short conference paper in English (CSCML format).
 * `draft_robust_ibug_short_cscml_he.tex` (compile with `xelatex`): 2-column short conference paper in Hebrew.
-* `draft_robust_ibug_short_accessible_he.tex` (compile with `xelatex`): Illustrated, accessible Hebrew edition with a mathematical notation glossary and TikZ diagrams for smart young readers.
+* `draft_robust_ibug_short_accessible_en.tex` (compile with `pdflatex`) & `accessible_paper_online_en.html`: Illustrated, accessible English edition (with notation glossary, TikZ diagrams, and live simulation GIFs `anomaly_filter_anim.gif` & `simulation_trap_anim.gif`).
+* `draft_robust_ibug_short_accessible_he.tex` (compile with `xelatex`) & `accessible_paper_online.html`: Illustrated, accessible Hebrew edition with notation glossary, TikZ diagrams, and live simulation GIFs.
 
 *(Note: `22_9/`, `projectB21_8/`, `final files/`, and `25_10/` are historical snapshots/backups; always edit in `22_10/`.)*
 

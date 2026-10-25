@@ -52,6 +52,7 @@ function main()
     b_succ = Vector{Bool}(undef, n)
     b_steps = Vector{Int}(undef, n)
     c_steps_benign = Vector{Int}(undef, n)   # Cautious under no attack (sanity: must equal Naive)
+    i_steps_benign = Vector{Int}(undef, n)   # Inertial under no attack (sanity: must equal Naive)
     Threads.@threads for i in 1:n
         Random.seed!(parse(UInt64, wide.Seed[i]))
         env = generate_random_env()
@@ -59,12 +60,15 @@ function main()
         b_succ[i] = r[:Naive].success
         b_steps[i] = r[:Naive].steps
         c_steps_benign[i] = r[:Cautious].steps
+        i_steps_benign[i] = r[:Inertial].steps
     end
 
     out = DataFrame(RunID=wide.RunID[1:n], Seed=wide.Seed[1:n],
         BenignSuccess=b_succ, BenignSteps=b_steps,
         CautiousSteps=wide.Cautious[1:n], CautiousSuccess=succ.Cautious[1:n])
-    CSV.write(OUTPUT_CSV, out)
+    if n == nrow(wide)
+        CSV.write(OUTPUT_CSV, out)
+    end
 
     # --- Summary ---
     s = b_steps[b_succ]
@@ -74,6 +78,7 @@ function main()
     @printf("Benign steps (succ.): mean %.1f, median %.1f [%d, %d], capped mean %.1f\n",
         mean(s), median(s), round(Int, quantile(s, 0.25)), round(Int, quantile(s, 0.75)), mean(b_steps))
     println("Cautious(no attack) == Naive(no attack) in all runs: ", all(c_steps_benign .== b_steps))
+    println("Inertial(no attack) == Naive(no attack) in all runs: ", all(i_steps_benign .== b_steps))
 
     # Theorem 1 bound check on runs where both benign and attacked-Cautious succeed.
     T_on = round(Int, ENEMY_DUTY_CYCLE * ENEMY_CYCLE_BASE)
