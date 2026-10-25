@@ -10,7 +10,7 @@
 
 This repository provides the official implementation, empirical data analysis, and manuscripts for the study of minimalist intensity-based bug navigation (**I-Bug**) under **intermittent additive signal spoofing**:
 
-$$S(p, t) = m(p - p_t) + u(t) \frac{\alpha_e}{\|p - p_e\|_2}, \quad m(p - p_t) = \frac{1}{\|p - p_t\|_2}, \quad u(t) \in \{0, 1\}$$
+$$S(p, t) = m(p - p_t) + u(t) \frac{\alpha_e}{\|p - p_e\|_2}, \quad m(p - p_t) = \phi(\|p - p_t\|_2), \quad u(t) \in \{0, 1\}$$
 
 Without requiring hardware changes, odometry, or absolute GPS coordinates, we introduce a **kinematics-based temporal anomaly filter** based on the radial Lipschitz bound $\Delta I_{\max}$. We evaluate three navigation paradigms:
 
@@ -88,3 +88,4 @@ run_batch_simulations(1000) # Evaluates 1,000 paired environments
 
 ## 5. Citation & Acknowledgments
 If you use this benchmark, simulator, or defense algorithm in your research, please cite our technical paper located in `docs/draft_robust_ibug_short_cscml.pdf`.
+
