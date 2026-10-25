@@ -1,12 +1,25 @@
-# Ignore large data and presentation files
+# Ignore large simulation data and archives
 *.csv
 *.pptx
 *.ppt
 *.7z
 *.zip
 
-# Ignore LaTeX source and compilation artifacts
-*.tex
+# Ignore local archive and backup folders
+local_archive/
+22_10/
+22_9/
+25_10/
+final files/
+projectB21_8/
+‏‏final raw files/
+
+# Ignore loose legacy root files
+TayLav09.pdf
+draft of Adversery tower I-Bug (1) andrey's nptes.pdf
+intensity_bug11.jl
+
+# Ignore LaTeX compilation and temporary artifacts
 *.aux
 *.log
 *.out
@@ -14,15 +27,3 @@
 *.toc
 *.lof
 *.lot
-
-# Ignore loose legacy files in root
-intensity_bug11.jl
-*.pdf
-!22_10/*.pdf
-
-# Ignore other folders (only 22_10 and root config are tracked)
-final files/
-projectB21_8/
-‏‏final raw files/
-22_9/
-25_10/
