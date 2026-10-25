@@ -1,11 +1,13 @@
 \documentclass[11pt, a4paper]{article}
 
 \usepackage{amsmath, amsthm, amssymb}
-\usepackage[top=0.85in, bottom=0.85in, left=0.85in, right=0.85in]{geometry}
+\usepackage[top=0.8in, bottom=0.8in, left=0.8in, right=0.8in]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, patterns}
 \usepackage[bidi=bidi]{babel}
 \babelprovide[import, main]{hebrew}
 \babelprovide[import]{english}
@@ -21,14 +23,13 @@
 \newtheorem{assumption}{הנחה}
 \newtheorem{remark}{הערה}
 
-\title{\vspace{-1em}\Large\textbf{ניווט \foreignlanguage{english}{I-Bug} חסין תחת מתקפת התחזות אותות לסירוגין}\\
-\large\textbf{גרסה מונגשת ומבוארת להבנת המתמטיקה והמונחים במאמר המדעי}\\[0.5ex]
-\normalsize\foreignlanguage{english}{\textbf{Resilient I-Bug Navigation under Intermittent Signal Spoofing (Accessible Edition)}}}
+\title{\vspace{-1.2em}\Large\textbf{ניווט \foreignlanguage{english}{I-Bug} חסין תחת מתקפת התחזות אותות לסירוגין}\\
+\large\textbf{גרסה מונגשת ומאוירת להבנת המתמטיקה והמונחים במאמר המדעי}\\[0.4ex]
+\normalsize\foreignlanguage{english}{\textbf{Resilient I-Bug Navigation under Intermittent Signal Spoofing (Illustrated Accessible Edition)}}}
 
 \author{
   \textbf{צוריאל ויזל} \quad \textbf{אברהם גז} \\
-  \small מנחה: ד"ר אנדריי ז'יטניקוב \\
-  \small הטכניון -- מכון טכנולוגי לישראל
+  \small מנחה: ד"ר אנדריי ז'יטניקוב $\cdot$ הטכניון -- מכון טכנולוגי לישראל
 }
 \date{}
 
@@ -40,7 +41,7 @@
 \noindent
 \textbf{על מה המאמר במשפט אחד?} דמיינו רובוט פשוט מאוד שצריך להגיע למגדל שידור בתוך מבוך חשוך (ללא \foreignlanguage{english}{GPS} וללא מפה), כשהחיישנים היחידים שלו הם "חיישן מישוש" לקירות וחיישן שמודד את עוצמת האות מהמגדל (כמו במשחק "חם-קר"). במאמר זה אנו מראים איך "מגדל תוקף" שמדליק ומכבה אות מזויף יכול לשגע את הרובוט וללכוד אותו בלולאה אינסופית — וחשוב מכך, איך הרובוט יכול להשתמש בחוקי הפיזיקה של המהירות של עצמו כדי לחשוף את התרמית ולנצח, בלי להוסיף אף חיישן חדש!
 
-\medskip
+\smallskip
 \noindent
 \textbf{התקציר המדעי המונגש:}
 רובוטים אוטונומיים מינימליסטיים (פשוטים ודלי-חיישנים) הפועלים בסביבות חסומות \foreignlanguage{english}{GPS} מסתמכים על מידע מקומי מהחיישנים שלהם במקום על מיקום גלובלי או \textbf{אודומטריה} (ספירת סיבובי גלגלים לחישוב מרחק). אלגוריתם ה-\foreignlanguage{english}{I-Bug} מבטיח מתמטית שהרובוט יגיע למטרה באמצעות חיישן מגע וחיישן \textbf{סקלרי} (חיישן שמחזיר מספר בודד — עוצמה — ללא כיוון) בלבד. אולם, כאשר ישנם מספר משדרים במרחב והמקלט מודד את \textbf{הסכום החיבורי} של העוצמות שלהם, הרובוט חשוף למתקפות \textbf{התחזות (\foreignlanguage{english}{Spoofing})} לסירוגין. משדר תוקף שפועל לסירוגין מעוות את כיוון העלייה בעוצמה (\textbf{הגרדיאנט}) במרחב הפתוח ויוצר שיאי עוצמה מזויפים לאורך קירות של מכשולים, מה שלוכד רובוט \foreignlanguage{english}{I-Bug} רגיל בהקפות אינסופיות סביב מכשולים. אנו מציגים \textbf{מסנן אנומליות} (גלאי חריגות) המבוסס על מהירות התנועה של הרובוט ושתי אסטרטגיות התגוננות — אסטרטגיה \textit{זהירה} (\foreignlanguage{english}{Cautious}) המשמרת במדויק את מסלול התנועה הבטוח של הרובוט התקין, ואסטרטגיה \textit{אינרציאלית} (\foreignlanguage{english}{Inertial}) מהירה שממשיכה לנוע "על עיוור" בזמן ההפרעה. אנו מוכיחים מתמטית שהאסטרטגיה הזהירה תמיד תשחזר את ההצלחה של רובוט ללא תקיפה, ומסבירים תופעה מפתיעה של \textbf{תהודה (\foreignlanguage{english}{Resonance})} שבה סנכרון זמנים בין הקפת מכשול לבין קצב ההבהוב של התוקף עלול ללכוד את האסטרטגיה האינרציאלית. בניסויי סימולציה על פני $1,000,000$ מבוכים אקראיים, הרובוט התמים (\foreignlanguage{english}{Naive}) מצליח רק ב-$54.68\%$ מהמקרים, האסטרטגיה האינרציאלית מצליחה ב-$99.61\%$ תוך קיצור זמן ההגעה ב-$20.5\%$, והאסטרטגיה הזהירה משיגה $\mathbf{100.00\%}$ הצלחה.
@@ -66,7 +67,7 @@
 \begin{equation*}
     m(p - p_t) = \|p - p_t\|_2^{-1} = \frac{1}{\|p - p_t\|_2}.
 \end{equation*}
-המשימה מוכרזת כהצלחה ברגע שהרובוט מתקרב למגדל המטרה עד כדי מרחק קטן מ-$R_{\text{reach}}$ (כלומר $\|p - p_t\|_2 < R_{\text{reach}}$). הרובוט פועל בצעדי זמן בדידים $k = 0, 1, 2, \dots$ (כל צעד נמשך זמן $\Delta t$, ובכל צעד הרובוט מתקדם מרחק $\Delta s = v_{\max}\Delta t$), ומבצע שלוש פעולות בסיסיות:
+המשימה מוכרזת כהצלחה ברגע שהרובוט מתקרב למגדל המטרה עד כדי מרחק קטן מ-$R_{\text{reach}}$ (כלומר $\|p - p_t\|_2 < R_{\text{reach}}$). הרובוט פועל בצעדי זמן בדידים $k = 0, 1, 2, \dots$ (כל צעד נמשך זמן $\Delta t$, ובכל צעד הרובוט מתקדם מרחק $\Delta s = v_{\max}\Delta t$), ומבצע שלוש פעולות בסיסיות (ראו איור~\ref{fig:ibug_and_spoof}א):
 \begin{enumerate}
     \item $u_{\text{ori}}$ (\textbf{כיוון לגרדיאנט — מציאת הכיוון ל"חם יותר"}): איך רובוט עם חיישן עוצמה בודד יודע לאן להסתובב? בתוך צעד אחד, הוא מבצע דגימות זעירות סביב נקודת העמידה שלו (קדימה/אחורה בציר $x$ ולמעלה/מטה בציר $y$) כדי לבדוק באיזה כיוון העוצמה $S(p, t)$ גדלה. לאחר מכן הוא מחשב את הזווית $\theta_{\nabla}$ בעזרת הפונקציה הטריגונומטרית $\operatorname{atan2}$ (שמתרגמת שינוי בציר $y$ ובציר $x$ לזווית במעגל $[0, 2\pi)$):
     \begin{equation}
@@ -76,6 +77,78 @@
     \item $u_{\text{fwd}}$ (\textbf{תנועה קדימה במרחב הפתוח — מצב \foreignlanguage{english}{\texttt{MoveToTower}}}): כל עוד הדרך פנויה, הרובוט מתקדם ישר לכיוון הזווית $\theta_k$ שמצא. אם הוא נתקל בקיר, הוא שומר בזיכרון את שיא העוצמה שראה בנקודת הפגיעה בתוך משתנה בשם $i_H$ (מהמילה \foreignlanguage{english}{Hit}: $i_H \leftarrow \max(S(p_k, t_k), i_H)$), פונה ימינה ב-$90^\circ$ ($\pi/2$ רדיאנים), ועובר למצב מעקב אחרי קיר (\foreignlanguage{english}{\texttt{FollowObstacle}}).
     \item $u_{\text{fol}}$ (\textbf{מעקב שפה סביב מכשול — מצב \foreignlanguage{english}{\texttt{FollowObstacle}}}): הרובוט הולך צמוד לקיר (כשהקיר נמצא משמאלו) ומחפש נקודה סביב המכשול שבה האות חזק יותר מהנקודה שבה הוא נתקע בקיר ($i_H$). הוא עוקב אחרי העוצמה הגבוהה ביותר שפגש על הקיר ($i_{\text{max}}$). ברגע שהוא: (א) טיפס לעוצמה גבוהה ממש מ-$i_H$ (כלומר $i_{\text{max}} > i_H + \epsilon$, כאשר $\epsilon$ הוא מרווח ביטחון קטנטן), ו-(ב) מרגיש שהעוצמה מתחילה לרדת ($S(p_k, t_k) < i_{\text{max}} - \epsilon$) — סימן שהוא בדיוק הגיע לנקודה הקרובה ביותר למגדל על גבי הקיר הזה! בנקודה זו הוא עוזב את הקיר, מעדכן את השיא $i_H \leftarrow i_{\text{max}}$, מכוון את עצמו מחדש ($u_{\text{ori}}$), וחוזר לצעוד במרחב הפתוח (\foreignlanguage{english}{\texttt{MoveToTower}}).
 \end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{otherlanguage}{english}
+\begin{tikzpicture}[scale=0.88, every node/.style={font=\footnotesize}]
+    % --- Panel A: How I-Bug Works ---
+    \draw[rounded corners=4pt, gray!40] (-0.3,-0.4) rectangle (7.4,4.4);
+    \node[anchor=north west, font=\footnotesize\bfseries] at (-0.1,4.3) {(a) \foreignlanguage{hebrew}{כיצד עובד אלגוריתם} I-Bug \foreignlanguage{hebrew}{תקין}};
+
+    % Target concentric rings
+    \foreach \r in {0.5, 1.1, 1.7, 2.3} {
+        \draw[red!20, dashed] (6.2,3.4) circle (\r);
+    }
+    % Target star/node
+    \node[circle, fill=red!80!black, inner sep=2.5pt, label={[red!80!black, above]:$p_t$ (\foreignlanguage{hebrew}{מטרה})}] (targetA) at (6.2,3.4) {};
+
+    % Obstacle
+    \filldraw[fill=gray!25, draw=black, thick] (2.2,1.2) rectangle (4.5,2.7);
+    \node at (3.35, 1.95) {\foreignlanguage{hebrew}{מכשול} $O_i$};
+
+    % Robot start
+    \node[circle, fill=blue!70!black, inner sep=2.2pt, label={[below]:$p_0$}] (startA) at (0.6,0.5) {};
+
+    % Path to hit point
+    \draw[-{Stealth[length=2.5mm]}, blue!70!black, very thick] (0.6,0.5) -- (2.2,1.55) node[midway, above left, sloped] {\texttt{MoveToTower}};
+    \node[circle, fill=orange!90!black, inner sep=2pt] at (2.2,1.55) {};
+    \node[anchor=east, orange!80!black, font=\scriptsize\bfseries] at (2.15,1.55) {\foreignlanguage{hebrew}{פגיעה:} $i_H$};
+
+    % Follow boundary path (keeping wall on left -> clockwise around bottom-left-top-right)
+    \draw[-{Stealth[length=2.2mm]}, teal!80!black, very thick, rounded corners=3pt]
+        (2.2,1.55) -- (1.95,1.55) -- (1.95,2.95) -- (4.5,2.95);
+    \node[teal!80!black, above] at (3.2,2.98) {\texttt{FollowObstacle} ($u_{\text{fol}}$)};
+
+    % Leave point (peak)
+    \node[circle, fill=green!60!black, inner sep=2.2pt] at (4.5,2.95) {};
+    \node[anchor=north west, green!50!black, font=\scriptsize\bfseries] at (4.52,2.9) {\foreignlanguage{hebrew}{שיא ועזיבה} ($i_{\max} > i_H$)};
+
+    % Path from leave point to target
+    \draw[-{Stealth[length=2.5mm]}, blue!70!black, very thick] (4.5,2.95) -- (5.95,3.32);
+
+    % --- Panel B: Vector Superposition & Gradient Deflection ---
+    \begin{scope}[xshift=8.2cm]
+        \draw[rounded corners=4pt, gray!40] (-0.3,-0.4) rectangle (7.4,4.4);
+        \node[anchor=north west, font=\footnotesize\bfseries] at (-0.1,4.3) {(b) \foreignlanguage{hebrew}{הטיית הגרדיאנט בזמן תקיפה} ($u(t)=1$)};
+
+        % Robot position p
+        \node[circle, fill=black, inner sep=2.5pt, label={[below left]:$p$ (\foreignlanguage{hebrew}{רובוט})}] (rob) at (1.5,1.0) {};
+
+        % Target tower
+        \node[circle, fill=red!80!black, inner sep=2.5pt, label={[above]:$p_t$ (\foreignlanguage{hebrew}{מטרה})}] (pt) at (5.8,3.5) {};
+        % Enemy tower
+        \node[star, star points=5, star point ratio=2.2, fill=purple!80!black, inner sep=1.8pt, label={[below]:$p_e$ (\foreignlanguage{hebrew}{תוקף})}] (pe) at (6.0,0.6) {};
+
+        % Vectors
+        \draw[-{Stealth[length=3mm]}, blue!75!black, very thick] (rob) -- (3.9,2.4)
+            node[above left, sloped, font=\scriptsize] {$\nabla m(p-p_t)$ (\foreignlanguage{hebrew}{משיכה למטרה})};
+        \draw[-{Stealth[length=3mm]}, purple!80!black, very thick] (rob) -- (4.1,0.77)
+            node[below, sloped, font=\scriptsize] {$\nabla e(p,t)$ (\foreignlanguage{hebrew}{משיכה לתוקף})};
+
+        % Parallelogram dashed lines
+        \draw[dashed, gray] (3.9,2.4) -- (6.5,2.17);
+        \draw[dashed, gray] (4.1,0.77) -- (6.5,2.17);
+
+        % Sum vector
+        \draw[-{Stealth[length=3.2mm]}, orange!90!black, line width=1.6pt] (rob) -- (6.5,2.17)
+            node[midway, above, sloped, font=\scriptsize\bfseries] {$\nabla_p S(p,t)$ (\foreignlanguage{hebrew}{הכיוון המעוות!})};
+    \end{scope}
+\end{tikzpicture}
+\end{otherlanguage}
+\caption{\textbf{(a)} פעולת אלגוריתם ה-\foreignlanguage{english}{I-Bug} התקין: הרובוט צועד לכיוון העלייה בעוצמה (\foreignlanguage{english}{\texttt{MoveToTower}}), שומר את העוצמה $i_H$ בפגיעה בקיר, מקיף את המכשול (\foreignlanguage{english}{\texttt{FollowObstacle}}) עד שהוא מוצא שיא עוצמה $i_{\max} > i_H$ בפינה הקרובה למטרה, ועוזב לעבר המטרה. \textbf{(b)} כאשר התוקף נדלק ($u(t)=1$), החיישן קולט את סכום שני המגדלים, ולכן כיוון העלייה התלולה ביותר ($\nabla_p S$) מוסת לכיוון הביניים וגורם לרובוט לסטות ממסלולו.}
+\label{fig:ibug_and_spoof}
+\end{figure}
 
 \noindent\textbf{מודל התקיפה: מה קורה כשמוסיפים מגדל זיוף מהבהב?}
 בעולם האמיתי, חיישני אנרגיה פשוטים (כמו גלאי אור, מיקרופון או מקלט עוצמת רדיו \foreignlanguage{english}{RSS}) קולטים את \textbf{סכום} העוצמות של כל המשדרים שפועלים באותו רגע \cite{kerns2014unmanned, psiaki2016gnss}. נניח שישנו משדר תוקף במיקום לא ידוע $p_e \in \mathcal{F}$ עם עוצמת שידור $\alpha_e > 0$. התוקף נעזר במתג $u(t) \in \{0, 1\}$: כאשר $u(t) = 0$ התוקף כבוי, וכאשר $u(t) = 1$ התוקף דולק.
@@ -94,7 +167,7 @@
     \nabla_p S(p, t) = -\frac{p - p_t}{\|p - p_t\|_2^3} - u(t)\,\alpha_e \frac{p - p_e}{\|p - p_e\|_2^3}.
     \label{eq:corrupted_grad}
 \end{equation}
-\textit{איך קוראים את משוואה~\eqref{eq:corrupted_grad}?} האיבר הראשון מושך את הרובוט לכיוון מגדל המטרה $p_t$, והאיבר השני מושך אותו לכיוון מגדל התוקף $p_e$ (החזקה השלישית במכנה נובעת מגזירה של וקטור המרחק). לכן:
+\textit{איך קוראים את משוואה~\eqref{eq:corrupted_grad}?} כפי שמודגם באיור~\ref{fig:ibug_and_spoof}ב, האיבר הראשון מושך את הרובוט לכיוון מגדל המטרה $p_t$, והאיבר השני מושך אותו לכיוון מגדל התוקף $p_e$ (החזקה השלישית במכנה נובעת מגזירה של וקטור המרחק). לכן:
 \begin{enumerate}
     \item \textbf{הטיית כיוון במרחב הפתוח:} הרובוט מחשב את כיוון העלייה $\nabla_p S$ ונסחף לכיוון משוקלל בין המטרה לתוקף במקום ללכת למטרה.
     \item \textbf{הרעלת סף הזיכרון ($i_H$):} זהו הנזק המסוכן ביותר! אם הרובוט פוגע בקיר (או מקיף קיר) בזמן שהתוקף דולק, העוצמה הנמדדת גבוהה באופן מלאכותי (כי היא כוללת את התוקף). הרובוט רושם בזיכרון סף $i_H$ גבוה ו"מורעל". לאחר מכן, כשהתוקף נכבה ($u(t) \to 0$), האות האמיתי סביב אותו מכשול חלש הרבה יותר מהשיא המזויף $i_H$, ולכן הרובוט לעולם לא יצליח לעבור את $i_H$ ויישאר לכוד בהקפת המכשול לנצח!
@@ -123,7 +196,57 @@
 הנחה~\ref{assump:discontinuity} אומרת דבר אינטואיטיבי: אם בתוך אלפית שנייה העוצמה קפצה בכמות שהייתה דורשת מהרובוט לזנק מטר שלם קדימה — זו לא תנועה של הרובוט, אלא משדר תוקף שנדלק! עם זאת, חשוב לדייק: הגנה זו מזהה \textbf{קפיצות חדות}. אם התוקף דולק קבוע מראש, או מגביר את העוצמה שלו לאט-לאט ובחשאי ("מתקפה אדיאבטית"), לא תהיה קפיצה חדה והמסנן לא יזהה אותה. בנוסף, אם תוקף ישאיר את המשדר דולק ללא הפסקה, הרובוט הזהיר שלנו יישאר בעצירה (מניעת שירות — \foreignlanguage{english}{Denial of Service}): המשפט שלנו מבטיח \textbf{בטיחות} (הרובוט לא יתבלבל ולא יורעל), אך כדי להתקדם (\textbf{חיוניות}) הוא זקוק להפסקות של התוקף. ההערה במאמר מראה גם שניתן להוסיף מרווח ביטחון מול רעשי מדידה קטנים בחיישן ($|\nu_k| \le \varepsilon_{\text{noise}}$).
 \end{remark}
 
-\noindent\textbf{כיצד פועל מסנן האנומליות?}
+\begin{figure}[htbp]
+\centering
+\begin{otherlanguage}{english}
+\begin{tikzpicture}[scale=0.92, every node/.style={font=\footnotesize}]
+    % Shaded attack region
+    \fill[red!10] (4.0,0) rectangle (8.0,3.6);
+    \node[red!70!black, font=\scriptsize\bfseries] at (6.0, 3.35) {\foreignlanguage{hebrew}{תוקף פעיל} ($u(t)=1,\; T_{\text{on}}=10$)};
+
+    % Shaded confirm region
+    \fill[orange!15] (8.0,0) rectangle (9.6,3.6);
+    \node[orange!80!black, font=\scriptsize\bfseries, align=center] at (8.8, 3.25) {\foreignlanguage{hebrew}{אימות}\\($N_{\text{confirm}}=3$)};
+
+    % Axes
+    \draw[-{Stealth[length=2.5mm]}, thick] (0,0) -- (13.2,0) node[right] {\foreignlanguage{hebrew}{צעד זמן} $k$};
+    \draw[-{Stealth[length=2.5mm]}, thick] (0,0) -- (0,3.8) node[above] {\foreignlanguage{hebrew}{עוצמה נקלטת} $S(p_k, t_k)$};
+
+    % Benign gradual climb before attack
+    \draw[blue!75!black, very thick] (0.3,0.7) .. controls (1.8,0.85) and (2.8,1.05) .. (4.0,1.2)
+        node[midway, below right, font=\scriptsize] {\foreignlanguage{hebrew}{שינוי טבעי איטי} ($\Delta I_k \le \Delta I_{\max}$)};
+
+    % Spike jump at k_on
+    \draw[-{Stealth[length=2.5mm]}, red!80!black, line width=1.5pt, densely dashed] (4.0,1.2) -- (4.0,2.85)
+        node[midway, left, font=\scriptsize\bfseries] {$\mathcal{A}_{\text{spike}}$ (\foreignlanguage{hebrew}{קפיצה!})};
+
+    % Flat top during pause (Cautious stands still so S is constant)
+    \draw[red!80!black, very thick] (4.0,2.85) -- (8.0,2.85)
+        node[midway, above, font=\scriptsize] {\foreignlanguage{hebrew}{הרובוט הזהיר עוצר ונועל זיכרון (\texttt{Paused})}};
+
+    % Drop jump at k_off
+    \draw[-{Stealth[length=2.5mm]}, green!55!black, line width=1.5pt, densely dashed] (8.0,2.85) -- (8.0,1.2)
+        node[midway, right, font=\scriptsize\bfseries] {$\mathcal{A}_{\text{drop}}$ (\foreignlanguage{hebrew}{נפילה!})};
+
+    % Confirmation ticks
+    \draw[orange!85!black, very thick] (8.0,1.2) -- (9.6,1.2);
+    \foreach \x/\c in {8.0/1, 8.8/2, 9.6/3} {
+        \filldraw[orange!85!black] (\x,1.2) circle (2pt) node[below, font=\scriptsize] {$c=\c$};
+    }
+
+    % Resume normal climb
+    \draw[blue!75!black, very thick] (9.6,1.2) .. controls (10.8,1.4) and (11.8,1.7) .. (12.7,2.05)
+        node[midway, below right, font=\scriptsize] {\foreignlanguage{hebrew}{חזרה לניווט רגיל (\texttt{Normal})}};
+
+    % True underlying signal dashed during attack
+    \draw[blue!40, dashed, thick] (4.0,1.2) -- (8.0,1.2) node[midway, below, font=\scriptsize] {\foreignlanguage{hebrew}{אות המטרה הנקי} $m(p-p_t)$};
+\end{tikzpicture}
+\end{otherlanguage}
+\caption{המחשת פעולת מסנן האנומליות והאסטרטגיה הזהירה (\foreignlanguage{english}{Cautious}) לאורך הזמן: בזמן הליכה רגילה העוצמה משתנה במתינות. ברגע שהתוקף נדלק נוצרת קפיצה אנכית חדה ($\mathcal{A}_{\text{spike}}$) שחורגת מהחסם הפיזיקלי $\Delta I_{\max}$. הרובוט הזהיר קופא במקום ונועל את זיכרונו עד שהוא מזהה את נפילת הכיבוי ($\mathcal{A}_{\text{drop}}$) ומאמת $N_{\text{confirm}}=3$ צעדים נקיים.}
+\label{fig:anomaly_filter}
+\end{figure}
+
+\noindent\textbf{כיצד פועל מסנן האנומליות? (ראו איור~\ref{fig:anomaly_filter})}
 בתחילת כל צעד $k$ (לפני שהרובוט זז), המסנן מודד את העוצמה הנוכחית $I_k^- = S(p_{k-1}, t_k)$ ומשווה אותה לעוצמה שנמדדה באותו מקום בסוף הצעד הקודם, $I_{k-1}^+ = S(p_{k-1}, t_{k-1})$. נסמן את ההפרש ב-$\Delta I_k = I_k^- - I_{k-1}^+$.
 \begin{itemize}
     \item \textbf{גילוי הדלקת תוקף ($\mathcal{A}_{\text{spike}}$ — קפיצה חדה למעלה):} מתרחש אם העוצמה זינקה ביותר מפי $\eta_{\text{spike}} = 2.0$ מהשינוי המותר פיזיקלית:
@@ -178,8 +301,35 @@
 \begin{equation*}
     T_{\text{orbit}} = m \cdot T_{\text{cycle}} \quad (\text{עבור מספר שלם } m \ge 1),
 \end{equation*}
-ובנוסף התוקף דולק בדיוק בזמן שהרובוט האינרציאלי חולף על פני אזור היציאה $\mathcal{A}_L$, אזי הרובוט יחלוף על פני נקודת היציאה כשהוא "עיוור" (במצב אינרציאלי שבו בדיקת העזיבה מושהית). מכיוון שזמן ההקפה הוא כפולה מדויקת של מחזור התוקף, הרובוט יגיע שוב לאותה נקודת יציאה בדיוק ברגע שהתוקף נדלק בסיבוב הבא, ושוב בסיבוב שאחריו — ויילכד בהקפה אינסופית!
+ובנוסף התוקף דולק בדיוק בזמן שהרובוט האינרציאלי חולף על פני אזור היציאה $\mathcal{A}_L$, אזי הרובוט יחלוף על פני נקודת היציאה כשהוא "עיוור" (במצב אינרציאלי שבו בדיקת העזיבה מושהית). מכיוון שזמן ההקפה הוא כפולה מדויקת של מחזור התוקף, הרובוט יגיע שוב לאותה נקודת יציאה בדיוק ברגע שהתוקף נדלק בסיבוב הבא, ושוב בסיבוב שאחריו — ויילכד בהקפה אינסופית! (ראו איור~\ref{fig:resonance_diagram}).
 \end{proposition}
+
+\begin{figure}[htbp]
+\centering
+\begin{otherlanguage}{english}
+\begin{tikzpicture}[scale=0.9, every node/.style={font=\footnotesize}]
+    % Obstacle
+    \filldraw[fill=gray!20, draw=black, thick] (0,0) rectangle (4.2,2.4);
+    \node[align=center] at (2.1,1.2) {\foreignlanguage{hebrew}{\textbf{מכשול}} $O_i$\\(\foreignlanguage{hebrew}{זמן הקפה} $T_{\text{orbit}} = 40$ \foreignlanguage{hebrew}{צעדים})};
+
+    % Normal boundary path (green)
+    \draw[-{Stealth[length=2.5mm]}, green!60!black, very thick, rounded corners=6pt]
+        (3.2,2.7) -- (4.5,2.7) -- (4.5,-0.3) -- (-0.3,-0.3) -- (-0.3,2.7) -- (1.0,2.7);
+    \node[green!55!black, below] at (2.1,-0.35) {\foreignlanguage{hebrew}{$30$ צעדים שהתוקף כבוי ($u=0$): האות באזור זה חלש מ-$i_H$}};
+
+    % Blind arc covering departure arc A_L at top-right corner
+    \draw[-{Stealth[length=2.5mm]}, red!85!black, line width=2.2pt, rounded corners=6pt]
+        (1.0,2.7) -- (4.5,2.7) -- (4.5,1.4);
+    \node[red!80!black, above, align=center] at (2.75,2.85) {\foreignlanguage{hebrew}{\textbf{קשת עיוורת} ($T_{\text{on}}=10$ צעדים, $u=1$):}\\\foreignlanguage{hebrew}{הרובוט האינרציאלי חולף על פני אזור היציאה $\mathcal{A}_L$ כשזיהוי השיא כבוי!}};
+
+    % Target in upper right
+    \node[circle, fill=red!80!black, inner sep=2.8pt, label={[red!80!black, right]:$p_t$ (\foreignlanguage{hebrew}{מגדל המטרה})}] (pt) at (7.2,3.4) {};
+    \draw[dashed, gray!70, ->] (4.5,2.7) -- (7.0,3.35) node[midway, below right, font=\scriptsize] {\foreignlanguage{hebrew}{היציאה שפוספסה ($\mathcal{A}_L$)}};
+\end{tikzpicture}
+\end{otherlanguage}
+\caption{המחשת מלכודת התהודה (\foreignlanguage{english}{Resonance}) בטענה~\ref{prop:resonance}: הקפת המכשול אורכת בדיוק $40$ צעדים — זהה למחזור ההבהוב של התוקף ($T_{\text{cycle}}=40$). לכן, בכל סיבוב מחדש, התוקף נדלק ל-$10$ צעדים (הקטע האדום) בדיוק כשהרובוט האינרציאלי עובר בפינה העליונה הקרובה למטרה ($\mathcal{A}_L$), והרובוט "מפספס את הרכבת" בכל הקפה מחדש.}
+\label{fig:resonance_diagram}
+\end{figure}
 
 \section{ניסויים ב-$1,000,000$ מבוכים ותוצאות}
 כדי לבדוק את ההוכחות שלנו בקנה מידה עצום, בנינו סימולטור פיזיקלי רציף בשפת התכנות \foreignlanguage{english}{Julia}. הזירה היא ריבוע בגודל $20 \times 20$, הרובוט מתחיל בנקודה $p_0 = (2, 1)$ וצריך להגיע למגדל המטרה ב-$p_t = (18, 18)$. התוקף פועל במחזוריות של $T_{\text{cycle}} = 40$ צעדים: דולק למשך $T_{\text{on}} = 10$ צעדים ונכבה למשך $T_{\text{off}} = 30$ צעדים. הגרלנו $1,000,000$ מבוכים שונים (שבכל אחד מהם 10 עד 16 קירות מלבניים שיוצרים צורות מורכבות), ובכל מבוך הרצנו את אותן שלוש אסטרטגיות בדיוק (ניסוי מזווג), לצד הרצת ביקורת של רובוט \foreignlanguage{english}{I-Bug} רגיל ללא תקיפה כלל ($u \equiv 0$). אם רובוט לא הגיע למטרה תוך $N_{\max} = 2,000$ צעדים, ההרצה נרשמה ככישלון.
@@ -233,7 +383,7 @@
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.68\linewidth]{simulation_trap.png}
+    \includegraphics[width=0.72\linewidth]{simulation_trap.png}
     \caption{דוגמה אמיתית מתוך הסימולציה שבה רואים את שלושת הרובוטים באותו מבוך: \textbf{התמים (תכלת)} מורעל ונלכד במכשול ה-\foreignlanguage{english}{L} במרכז; \textbf{האינרציאלי (ירוק)} נלכד בלולאת תהודה מסונכרנת סביב המלבן העליון; ו\textbf{הזהיר (כתום)} עוצר בזמן ההפרעות ומגיע למגדל המטרה (הכוכב האדום) תוך $137$ צעדים.}
     \label{fig:trap}
 \end{figure}
@@ -269,4 +419,3 @@ M.~Basseville and I.~V. Nikiforov, \textit{Detection of Abrupt Changes: Theory a
 \end{otherlanguage}
 
 \end{document}
-
