@@ -37,7 +37,7 @@
 
 \begin{abstract}
 \noindent
-רובוטים אוטונומיים מינימליסטיים הפועלים בסביבות חסומות \foreignlanguage{english}{GPS} מסתמכים על משוב חיישנים מקומי במקום על קואורדינטות גלובליות או אודומטריה. אלגוריתם ה-\foreignlanguage{english}{I-Bug} משיג התכנסות מובטחת למטרה באמצעות חיישן מגע וחיישן עוצמת אות סקלרי בלבד. עם זאת, במערכות חישה לא-קוהרנטיות שבהן המקלט מודד סכום חיבורי של תרומות ממספר משדרים, ניווט מבוסס-עוצמה חשוף באופן חמור למתקפות התחזות (\foreignlanguage{english}{Spoofing}) לסירוגין. משדר תוקף חיבורי מעוות את גרדיאנט העוצמה המרחבי במרחב החופשי ומזריק נקודות מקסימום כוזבות לאורך שפות מכשולים, ובכך לוכד סוכני \foreignlanguage{english}{I-Bug} סטנדרטיים בלולאות אינסופיות. במאמר זה אנו מציגים מסנן אנומליות זמני מבוסס-קינמטיקה ושתי אסטרטגיות נגד — אסטרטגיה \textit{זהירה} (\foreignlanguage{english}{Cautious}) המשמרת באופן מותנה את הבטחת ההתכנסות של \foreignlanguage{english}{I-Bug} התקין תחת מודל האיום שלנו, והיוריסטיקה \textit{אינרציאלית} (\foreignlanguage{english}{Inertial}) מהירה בחוג פתוח — ללא צורך בשום חומרה נוספת. באמצעות ניצול הפרדת סדרי הגודל בין שינויי עוצמה מרחביים החסומים קינמטית לבין אי-רציפויות מיתוג של התוקף בזמן, המסנן שלנו מבודד פרצי תקיפה בזמן אמת. אנו מוכיחים משפט שימור מותנה המראה כי תחת התחזות מדרגה לסירוגין (הנחות 1–2), האסטרטגיה הזהירה משמרת את מסלול המצבים הפעילים המדויק של כל ריצת \foreignlanguage{english}{I-Bug} תקינה מתכנסת, ומוכיחים כי הקפאת זיכרון בלבד תוך המשך תנועת שפה דטרמיניסטית אינה מספיקה להתכנסות אוניברסלית עקב נעילת פאזה טופולוגית (תהודה / \foreignlanguage{english}{Resonance}). הערכות מזווגות על פני $1,000,000$ סביבות מכשולים דו-ממדיות אקראיות מראות כי תחת התפלגות הסביבות שנדגמה, אלגוריתם הבסיס התמים (\foreignlanguage{english}{Naive I-Bug}) מצליח ב-$54.68\% \pm 0.10\%$ בלבד מההרצות, ההיוריסטיקה האינרציאלית משיגה $99.61\% \pm 0.01\%$ הצלחה תוך קיצור ממוצע הצעדים בריצות מוצלחות ב-$20.5\%$, והאסטרטגיה הזהירה משיגה $100.00\%$ הצלחה נצפית (רווח בר-סמך \foreignlanguage{english}{Clopper--Pearson} של $95\%$: $[99.9996\%, 100.00\%]$).
+רובוטים אוטונומיים מינימליסטיים הפועלים בסביבות חסומות \foreignlanguage{english}{GPS} מסתמכים על משוב חיישנים מקומי במקום על קואורדינטות גלובליות או אודומטריה. אלגוריתם ה-\foreignlanguage{english}{I-Bug} משיג התכנסות מובטחת למטרה באמצעות חיישן מגע וחיישן עוצמת אות סקלרי בלבד. עם זאת, במערכות חישה לא-קוהרנטיות שבהן המקלט מודד סכום חיבורי של תרומות ממספר משדרים, ניווט מבוסס-עוצמה חשוף באופן חמור למתקפות התחזות (\foreignlanguage{english}{Spoofing}) לסירוגין. משדר תוקף חיבורי מעוות את גרדיאנט העוצמה המרחבי במרחב החופשי ומזריק נקודות מקסימום כוזבות לאורך שפות מכשולים, ובכך לוכד סוכני \foreignlanguage{english}{I-Bug} סטנדרטיים בלולאות אינסופיות. במאמר זה אנו מציגים מסנן אנומליות זמני מבוסס-קינמטיקה ושתי אסטרטגיות נגד — אסטרטגיה \textit{זהירה} (\foreignlanguage{english}{Cautious}) המשמרת באופן מותנה את הבטחת ההתכנסות של \foreignlanguage{english}{I-Bug} התקין תחת מודל האיום שלנו, והיוריסטיקה \textit{אינרציאלית} (\foreignlanguage{english}{Inertial}) מהירה בחוג פתוח — ללא צורך בשום חומרה נוספת. באמצעות ניצול הפרדת סדרי הגודל בין שינויי עוצמה מרחביים החסומים קינמטית לבין אי-רציפויות מיתוג של התוקף בזמן, המסנן שלנו מבודד פרצי תקיפה בזמן אמת. אנו מוכיחים משפט שימור מותנה המראה כי תחת התחזות מדרגה לסירוגין (הנחות 1–2), האסטרטגיה הזהירה משמרת את מסלול המצבים הפעילים המדויק של כל ריצת \foreignlanguage{english}{I-Bug} תקינה מתכנסת, ומוכיחים כי הקפאת זיכרון בלבד תוך המשך תנועת שפה דטרמיניסטית אינה מספיקה להתכנסות אוניברסלית עקב נעילת פאזה טופולוגית (תהודה / \foreignlanguage{english}{Resonance}). הערכות מזווגות על פני $1,000,000$ סביבות מכשולים דו-ממדיות אקראיות מראות כי תחת התפלגות הסביבות שנדגמה, אלגוריתם הבסיס התמים (\foreignlanguage{english}{Naive I-Bug}) מצליח ב-$54.68\% \pm 0.10\%$ בלבד מההרצות, ההיוריסטיקה האינרציאלית משיגה $99.61\% \pm 0.01\%$ הצלחה תוך קיצור ממוצע הצעדים בריצות מוצלחות ב-$20.5\%$, והאסטרטגיה הזהירה משיגה $100.00\%$ הצלחה נצפית (רווח בר-סמך \foreignlanguage{english}{Clopper--Pearson} של $95\%$: $[99.9996\%, 100.00\%]$), בדומה לייחוס ה-\foreignlanguage{english}{I-Bug} התקין ללא תקיפה.
 \end{abstract}
 
 \section{מבוא ומודל האיום}
@@ -50,6 +50,7 @@
         \theta_{\nabla}(p, t) = \operatorname{atan2}\!\bigl(\partial_y S(p, t),\, \partial_x S(p, t)\bigr) \pmod{2\pi}.
         \label{eq:grad_angle}
     \end{equation}
+    פעולה זו מממשת את כיוון ה-\foreignlanguage{english}{I-Bug} ללא חיישן נוסף: בסימולציה, הנגזרות מחושבות כהפרשים סופיים מרכזיים של $S$ בארבע נקודות דגימה סמוכות בתוך צעד בקרה יחיד (אנו מניחים ש-$u(t)$ אינו מתמתג במהלך דגימות אלו).
     \item $u_{\text{fwd}}$ (\textbf{תנועה קדימה}): צועד ליניארית בכיוון $\theta_k$ במצב מרחב חופשי \foreignlanguage{english}{\texttt{MoveToTower}}. בעת מגע עם מכשול, הרובוט מתעד את סף הפגיעה $i_H \leftarrow \max(S(p_k, t_k), i_H)$, פונה ימינה ב-$\pi/2$, ועובר למצב \foreignlanguage{english}{\texttt{FollowObstacle}}.
     \item $u_{\text{fol}}$ (\textbf{מעקב שפה}): עוקב אחר היקף המכשול תוך שמירת הקיר משמאלו ועדכון המקסימום המקומי $i_{\text{max}}$. ברגע שהרובוט טיפס מעל הסף ($i_{\text{max}} > i_H + \epsilon$) וזיהה לאחריו דגימה יורדת ($S(p_k, t_k) < i_{\text{max}} - \epsilon$), הוא מעדכן $i_H \leftarrow i_{\text{max}}$, מפעיל $u_{\text{ori}}$ וחוזר ל-\foreignlanguage{english}{\texttt{MoveToTower}}.
 \end{enumerate}
@@ -84,7 +85,7 @@
     \Delta I_{\max}(I_{\text{ref}}) = \frac{\delta s}{d(d - \delta s)} = \frac{\delta s\, I_{\text{ref}}^2}{1 - \delta s\, I_{\text{ref}}}.
     \label{eq:lipschitz}
 \end{equation}
-מנגד, $u(t)$ ממתג בין $0$ ל-$1$ עם משך פעילות $T_{\text{on}} \ge 1$ צעדים ומשך השבתה $T_{\text{off}} > N_{\text{confirm}}$ צעדים, ומייצר קפיצת מדרגה מיידית
+מנגד, $u(t)$ ממתג בין $0$ ל-$1$ כך שכל פרץ פעיל נמשך לכל היותר $T_{\text{on}} \ge 1$ צעדים וכל מרווח השבתה נמשך לכל הפחות $T_{\text{off}} > N_{\text{confirm}}$ צעדים (לוח זמנים מחזורי קבוע הוא מקרה פרטי), ומייצר קפיצת מדרגה מיידית
 \begin{equation}
     e_{\min} := \frac{\alpha_e}{\max_{p \in \mathcal{F}_{\text{nav}}} \|p - p_e\|_2} \ge \frac{\alpha_e}{\operatorname{diam}(\mathcal{W})}
     \label{eq:emin_short}
@@ -93,7 +94,7 @@
 \end{assumption}
 
 \begin{remark}[מוטיבציה פיזיקלית, תחום חלות ורעש חסום]
-הנחה~\ref{assump:discontinuity} מבוססת על הפרדת סדרי גודל בזמן: דגימה אלקטרונית ($\text{kHz}$) מהירה בסדרי גודל מתנועה מכנית ($v_{\max}$), ולכן $\delta s = v_{\max}\delta t$ ו-$\Delta I_{\max}$ קטנים מאוד ביחס לקפיצות מיתוג. ההבטחה התאורטית אינה חלה על מתקפות הפועלות ברציפות, מתקפות בעלות שיפוע איטי (\foreignlanguage{english}{Slowly Ramped}), או מתקפות מתחת לסף הגילוי שבהן השארית הזמנית נותרת מתחת לסף \cite{psiaki2016gnss}; ניתוח פורמלי של מתקפות חמקניות כאלה מושאר לעבודה עתידית. תחת רעש מדידה חסום $|\nu_k| \le \varepsilon_{\text{noise}}$, התראות שווא נמנעות אם $\Delta I_{\max} + 2\varepsilon_{\text{noise}} < \eta_{\text{spike}}\Delta I_{\max}$, והחמצות גילוי נמנעות אם $e_{\min} - 2\varepsilon_{\text{noise}} > \eta_{\text{spike}}\Delta I_{\max}$ (ובאופן אנלוגי עבור $\mathcal{A}_{\text{drop}}$ עם $\eta_{\text{drop}} \le \eta_{\text{spike}}$).
+הנחה~\ref{assump:discontinuity} מבוססת על הפרדת סדרי גודל בזמן: דגימה אלקטרונית ($\text{kHz}$) מהירה בסדרי גודל מתנועה מכנית ($v_{\max}$), ולכן $\delta s = v_{\max}\delta t$ ו-$\Delta I_{\max}$ קטנים מאוד ביחס לקפיצות מיתוג. ההבטחה התאורטית אינה חלה על מתקפות הפועלות ברציפות, מתקפות בעלות שיפוע איטי (\foreignlanguage{english}{Slowly Ramped}), או מתקפות מתחת לסף הגילוי שבהן השארית הזמנית נותרת מתחת לסף \cite{psiaki2016gnss}; ניתוח פורמלי של מתקפות חמקניות כאלה מושאר לעבודה עתידית. בפרט, תוקף המודע להגנה יכול לעכב את הרובוט הזהיר ללא הגבלה (מניעת שירות) על ידי שמירת $u(t)=1$ או כיבוי ל-$N_{\text{confirm}}$ צעדים לכל היותר; משפט~\ref{thm:cautious} מבטיח בטיחות (\foreignlanguage{english}{Safety}), ולא חיוניות (\foreignlanguage{english}{Liveness}), מול תוקפים כאלה. תחת רעש מדידה חסום $|\nu_k| \le \varepsilon_{\text{noise}}$, התראות שווא נמנעות אם $\Delta I_{\max} + 2\varepsilon_{\text{noise}} < \eta_{\text{spike}}\Delta I_{\max}$, והחמצות גילוי נמנעות אם $e_{\min} - 2\varepsilon_{\text{noise}} > \eta_{\text{spike}}\Delta I_{\max}$ (ובאופן אנלוגי עבור $\mathcal{A}_{\text{drop}}$ עם $\eta_{\text{drop}} \le \eta_{\text{spike}}$).
 \end{remark}
 
 \noindent\textbf{מסנן האנומליות.}
@@ -103,7 +104,7 @@
     \mathcal{A}_{\text{drop}} &\iff (-\Delta I_k > 0.15 I_{k-1}^+) \;\lor \nonumber\\
     &\qquad\quad (-\Delta I_k > \eta_{\text{drop}}\Delta I_{\max}(I_k^-)), \label{eq:drop}
 \end{align}
-כאשר $\eta_{\text{spike}} = 2.0$ ו-$\eta_{\text{drop}} = 1.2$. אנו בוחנים שלוש אסטרטגיות:
+כאשר $\eta_{\text{spike}} = 2.0$ ו-$\eta_{\text{drop}} = 1.2$. שתי הקריאות נלקחות באותו מיקום $p_{k-1}$, ולכן $\Delta I_k$ התקין מתאפס לחלוטין בסימולציה חסרת-הרעש שלנו; $\Delta I_{\max}$ מהווה מרווח ביטחון שמרני עבור חיישנים פיזיקליים הסוכמים על פני $\delta t$ תוך תנועה עד $\delta s$, ועבור רעש (הערה~1). תנאי ה-$15\%$ הוא מקדם הגנה היוריסטי המוסיף גילויים בלבד ואינו נדרש בניתוח הפורמלי. אנו בוחנים שלוש אסטרטגיות:
 \begin{itemize}
     \item \textbf{תמימה (\foreignlanguage{english}{Naive} -- בסיס \foreignlanguage{english}{I-Bug} המקורי \cite{taylor2014intensity}):} עוקפת את המסנן, ומבצעת $u_{\text{ori}}, u_{\text{fwd}}, u_{\text{fol}}$ ועדכוני $i_H$ ישירות על $S(p, t)$.
     \item \textbf{זהירה (\foreignlanguage{english}{Cautious} -- הקפאת מצב):} עם זיהוי $\mathcal{A}_{\text{spike}}$, הרובוט עובר למצב \foreignlanguage{english}{\texttt{Paused}}: הוא עוצר במקום ($\Delta p_k = 0$), נועל את תנוחתו $(p_{\text{frozen}}, \theta_{\text{frozen}})$ ואת זיכרונו הפנימי $(i_H, i_{\text{max}}, i_{\text{mem}})$, וממתין עד לזיהוי $\mathcal{A}_{\text{drop}}$ ואימות של $N_{\text{confirm}} = 3$ צעדים יציבים רצופים לפני חזרה לניווט \foreignlanguage{english}{\texttt{Normal}}.
@@ -133,7 +134,7 @@
 \end{proposition}
 
 \section{הערכה אמפירית בקנה מידה רחב}
-מימשנו סימולטור קינמטי דו-ממדי רציף בשפת \foreignlanguage{english}{Julia} ($\mathcal{W} = [0, 20]^2$, $p_0 = (2, 1)$, $p_t = (18, 18)$, $R_{\text{reach}} = 0.5$, $r_c = \Delta s = 0.3$, $T_{\text{cycle}} = 40$, $T_{\text{on}} = 10$, $\alpha_e = 1.0$, אופק $N_{\max} = 2,000$). על פני $1,000,000$ מבוכים מוגרלים (10–16 קירות מלבניים חופפים עם מעברים רחבים ושוליים היקפיים), שלוש האסטרטגיות הוערכו בניסויים מזווגים.
+מימשנו סימולטור קינמטי דו-ממדי רציף בשפת \foreignlanguage{english}{Julia} ($\mathcal{W} = [0, 20]^2$, $p_0 = (2, 1)$, $p_t = (18, 18)$, $R_{\text{reach}} = 0.5$, $r_c = \Delta s = 0.3$, $T_{\text{cycle}} = 40$, $T_{\text{on}} = 10$, $\alpha_e = 1.0$, אופק $N_{\max} = 2,000$, והעתקת מסנן $\delta s = 0.002$). על פני $1,000,000$ מבוכים מוגרלים (10–16 קירות מלבניים חופפים עם מעברים רחבים ושוליים היקפיים), שלוש האסטרטגיות הוערכו בניסויים מזווגים, לצד ריצת ייחוס של \foreignlanguage{english}{I-Bug} תקין ללא תקיפה ($u \equiv 0$) באותם מבוכים בדיוק.
 
 \begin{table}[htbp]
 \centering
@@ -146,6 +147,7 @@
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{אסטרטגיה} & \textbf{הצלחה (\foreignlanguage{english}{$95\%$ CI})} & \textbf{ממוצע (מוצלחות)} & \textbf{חציון [\foreignlanguage{english}{IQR}] (מוצלחות)} & \textbf{$\bar{N}_{\text{capped}}$} \\ \midrule
+\textit{\foreignlanguage{english}{Benign I-Bug} (ללא תקיפה)} & \foreignlanguage{english}{\textit{$100.00\%$}} & \foreignlanguage{english}{\textit{$132.6$}} & \foreignlanguage{english}{\textit{$126.0$ $[108,\, 150]$}} & \foreignlanguage{english}{\textit{$132.6$}} \\ \midrule
 \foreignlanguage{english}{Naive} \cite{taylor2014intensity} & \foreignlanguage{english}{$54.68\% \pm 0.10\%$}  & \foreignlanguage{english}{$199.3$} & \foreignlanguage{english}{$153.0$ $[121,\, 205]$} & \foreignlanguage{english}{$1015.4$} \\
 \foreignlanguage{english}{Cautious} & \foreignlanguage{english}{$\mathbf{100.00\%}$ ($[99.9996, 100]$)} & \foreignlanguage{english}{$193.0$} & \foreignlanguage{english}{$178.0$ $[160,\, 215]$} & \foreignlanguage{english}{$193.0$} \\
 \foreignlanguage{english}{Inertial} & \foreignlanguage{english}{$99.61\% \pm 0.01\%$}  & \foreignlanguage{english}{$\mathbf{153.4}$} & \foreignlanguage{english}{$\mathbf{135.0}$ $[115,\, 168]$} & \foreignlanguage{english}{$\mathbf{160.6}$} \\ \bottomrule
@@ -174,7 +176,7 @@
 \noindent\textbf{תוצאות ומסקנות.}
 טבלה~\ref{tab:results} ואיורים~\ref{fig:succ}–\ref{fig:trap} תומכים בממצאים התאורטיים שלנו תחת התפלגות הסביבות שנדגמה:
 (1) אלגוריתם ה-\foreignlanguage{english}{Naive I-Bug} נכשל ב-$45.32\%$ מהסביבות שנדגמו, כאשר כישלונות מייצגים מדגימים הסטת גרדיאנט והרעלת סף (למשל $i_H = 1.230$ באיור~\ref{fig:trap}).
-(2) תחת הנחות~\ref{assump:superposition}–\ref{assump:discontinuity}, אסטרטגיית \foreignlanguage{english}{Cautious} משיגה $100.00\%$ הצלחה נצפית ($10^6 / 10^6$ הרצות, זמן סיום מקסימלי נצפה של $578$ צעדים; $137$ צעדים באיור~\ref{fig:trap}), בהתאם למשפט~\ref{thm:cautious}.
+(2) תחת הנחות~\ref{assump:superposition}–\ref{assump:discontinuity}, אסטרטגיית \foreignlanguage{english}{Cautious} משיגה $100.00\%$ הצלחה נצפית ($10^6 / 10^6$ הרצות, זמן סיום מקסימלי נצפה של $578$ צעדים; $137$ צעדים באיור~\ref{fig:trap}), בהתאם למשפט~\ref{thm:cautious}. מאחר שגם \foreignlanguage{english}{I-Bug} התקין מצליח בכל מבוך, תוצאה זו מדגימה \emph{שימור} ולא שיפור: \foreignlanguage{english}{Cautious} מצליח בדיוק היכן ש-\foreignlanguage{english}{I-Bug} התקין מצליח, מקיים את משוואה~\eqref{eq:bound} בכל הרצה, ומשלם תקורה ממוצעת של $60.4$ צעדים ($+45.6\%$).
 (3) בקרב הריצות המוצלחות, ההיוריסטיקה ה-\foreignlanguage{english}{Inertial} מקצרת את ממוצע הצעדים ב-$20.5\%$ ($153.4$ לעומת $193.0$ צעדים; וב-$16.8\%$ במדד הבלתי-מותנה $\bar{N}_{\text{capped}} = 160.6$), תוך כישלון ב-$0.39\%$ ($3,877$) מהניסויים; הכישלונות הנצפים עקביים עם מנגנון נעילת הפאזה של טענה~\ref{prop:resonance}, כפי שמודגם באיור~\ref{fig:trap} ($i_H = 0.167$). תוצאות אלו מבססות שקלול תמורות (\foreignlanguage{english}{Trade-off}) ברור בין בטיחות ליעילות: הקפאת מצב ותנועה מלאה משמרת באופן מותנה את התכנסות \foreignlanguage{english}{I-Bug} התקין תחת מתקפת מדרגה לסירוגין (למעט מתקפות רציפות, משופעות אטית או מתחת לסף), בעוד שהמשך תנועה בחוג פתוח ממקסם מהירות כאשר לכידות תהודה נדירות הן נסבלות או מופחתות באמצעות עירור אקראי.
 
 \begin{figure}[htbp]
