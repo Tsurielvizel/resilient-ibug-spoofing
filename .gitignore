@@ -1,3 +1,28 @@
+# Ignore large data and presentation files
 *.csv
 *.pptx
 *.ppt
+*.7z
+*.zip
+
+# Ignore LaTeX source and compilation artifacts
+*.tex
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+
+# Ignore loose legacy files in root
+intensity_bug11.jl
+*.pdf
+!22_10/*.pdf
+
+# Ignore other folders (only 22_10 and root config are tracked)
+final files/
+projectB21_8/
+‏‏final raw files/
+22_9/
+25_10/
