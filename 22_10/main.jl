@@ -17,11 +17,11 @@ println("All modules loaded successfully!")
 
 # --- אפשרות 1: יצירת לוגים ---
 # הפעלה מהירה של 1000 סימולציות ללא גרפיקה ושמירה ל-CSV
-run_batch_simulations(10000)
+#run_batch_simulations(1000000)
 
 # --- אפשרות 2: תצוגה מתוך לוג ---
 # הפעלת Replay מתוך קובץ ה-CSV (לדוגמה, צפייה בהרצה מספר 3)
-launch_viewer_navigator("simulation_results.csv", 54)
+launch_viewer_navigator("simulation_results.csv", 457)
 
 # --- אפשרות 3: הרצה ישירה ללא לוג ---
 # הגרלת סביבה אקראית והצגתה מיד על המסך

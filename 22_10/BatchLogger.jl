@@ -6,7 +6,7 @@ using DataFrames
 using CSV
 using Random
 
-function run_single_batch_sim(env::SimulationEnv, max_steps::Int=600)
+function run_single_batch_sim(env::SimulationEnv, max_steps::Int=2000)
     strategies = [:Naive, :Cautious, :Inertial]
     states = RobotState[]
 

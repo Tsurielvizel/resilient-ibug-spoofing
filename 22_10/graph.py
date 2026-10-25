@@ -28,7 +28,7 @@ plt.figure(figsize=(8, 6))
 success_rates = df.groupby('Strategy')['Success'].mean() * 100
 success_rates = success_rates.reindex(order)
 
-ax = sns.barplot(x=success_rates.index, y=success_rates.values, palette=strategy_colors, edgecolor='black')
+ax = sns.barplot(x=success_rates.index, y=success_rates.values, hue=success_rates.index, palette=strategy_colors, edgecolor='black', legend=False)
 plt.title('Success Rates by Strategy (1,000,000 Runs)', fontweight='bold')
 plt.ylabel('Success Rate (%)', fontweight='bold')
 plt.xlabel('Strategy', fontweight='bold')
@@ -50,7 +50,7 @@ plt.figure(figsize=(8, 6))
 # Filter ONLY successful runs to see true navigation cost
 df_success = df[df['Success'] == True]
 
-ax = sns.boxplot(x='Strategy', y='Steps', data=df_success, order=order, palette=strategy_colors, fliersize=2)
+ax = sns.boxplot(x='Strategy', y='Steps', hue='Strategy', data=df_success, order=order, palette=strategy_colors, fliersize=2, legend=False)
 plt.title('Step Count Distribution (Successful Runs Only)', fontweight='bold')
 plt.ylabel('Number of Steps to Target', fontweight='bold')
 plt.xlabel('Strategy', fontweight='bold')

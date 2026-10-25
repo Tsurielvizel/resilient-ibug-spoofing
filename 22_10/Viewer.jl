@@ -23,7 +23,7 @@ function state_display_label(t::TrajectoryPoint)
     end
 end
 
-function run_viewer_simulation(env::SimulationEnv, max_steps::Int=300)
+function run_viewer_simulation(env::SimulationEnv, max_steps::Int=2000)
     strategies = [:Naive, :Cautious, :Inertial]
     states = RobotState[]
 
